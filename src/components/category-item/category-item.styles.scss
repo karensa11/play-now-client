@@ -1,0 +1,32 @@
+.category-item {
+  background-color: #444;
+  border-radius: 10px;
+  margin: 10px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip:    padding;
+  background-clip:         padding-box;
+  box-shadow: 5px 5px 10px #222;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-weight: bold;
+  border: 2px solid transparent;
+
+  img {
+    width: 100px;
+    height: 70px;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .name {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+  }
+
+  &:hover {
+    color: #d9af74;
+    border: 2px solid #d9af74;
+  }
+}

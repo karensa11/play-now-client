@@ -1,0 +1,19 @@
+.header-component {
+  background-color: #181818;
+  height: 80px;
+  border-bottom: 1px solid #111;
+  box-shadow: 5px 5px 7px #222;
+
+  .logo {
+    font-weight: bold;
+    color: #ccc;
+    font-size: 30px;
+    padding: 20px 0 0 20px;
+    width: 15vw;
+
+    &:hover {
+      color: yellow;
+      cursor: pointer;
+    }
+  }
+}
