@@ -5,9 +5,9 @@ export default function CustomButton({children, isSignInWithGoogle, inverted, ..
 {
     return (
         <button className={`
-                        ${inverted ? 'inverted' : ''}
+                        ${inverted ? 'inverted' : ''} 
                         ${isSignInWithGoogle ? 'sign-in-with-google' : ''} 
-                        custom-button
+                        custom-button-component
                         `}
                 {...otherProps}>
             {children}

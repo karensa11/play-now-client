@@ -11,23 +11,6 @@
       font-size: 25px;
     }
   }
-
-  .input-field {
-    background: #222;
-    border-radius: 2px;
-    border: 1px solid #aaa;
-    color: white;
-    font-size: 25px;
-    padding: 5px 20px;
-
-    &:focus {
-      background-color: #aaa;
-      color: black;
-    }
-    textarea {
-      resize: none;
-    }
-  }
   .submit {
     margin-top: 20px;
     display: flex;

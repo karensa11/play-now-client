@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import "./about.styles.scss";
 import ReactMarkdown from "react-markdown";
-import aboutContent from "../../assets/about.MD.js";
-import {setTitle} from "../../util/utils";
+import aboutContent from "../../../assets/txt/about.MD.js";
+import {setTitle} from "../../../util/utils";
 
 export default function About() {
     useEffect(() => {

@@ -1,0 +1,17 @@
+.login-component {
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+
+  .login-component-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

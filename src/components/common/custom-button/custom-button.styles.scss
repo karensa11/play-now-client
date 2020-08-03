@@ -1,4 +1,4 @@
-.custom-button {
+.custom-button-component {
   min-width: 165px;
   width: auto;
   height: 50px;
@@ -20,5 +20,16 @@
     background-color: yellow;
     color: black;
     border: 1px solid black;
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid #777;
+
+    &:hover {
+      background-color: yellow;
+      color: black;
+    }
   }
 }

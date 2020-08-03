@@ -1,0 +1,29 @@
+.account-details-component {
+  display: flex;
+  justify-content: center;
+
+  .content {
+    width: 80%;
+
+    .basic-details {
+      padding-top: 50px;
+      display: flex;
+      justify-content: center;
+      background-color: #242832;
+      height: 70px;
+
+      .title {
+        font-weight: bold;
+      }
+
+      .value {
+        color: #aaa;
+      }
+    }
+    .const-details {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

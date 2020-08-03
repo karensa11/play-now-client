@@ -39,7 +39,6 @@ export default class CategoriesStripe extends Component {
 
     render() {
         const endIndex = this.state.startIndex + this.state.pageSize;
-        console.log("endIndex " + endIndex);
         return (
             <div className="categories-stripe-component">
                 <div className="categories-container"
@@ -49,7 +48,8 @@ export default class CategoriesStripe extends Component {
                     }}>
                     {categories.map(category => {
                         return (
-                            <CategoryItem category={category} itemSize={ITEM_SIZE - 25} />
+                            <CategoryItem key={category.code}
+                                          category={category} itemSize={ITEM_SIZE - 25} />
                         )
                     })}
                 </div>

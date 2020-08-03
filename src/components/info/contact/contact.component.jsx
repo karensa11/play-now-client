@@ -1,9 +1,9 @@
-import React, {Component, useEffect} from "react";
+import React, {Component} from "react";
 import "./contact.styles.scss";
-import CustomButton from "../common/custom-button/custom-button.component";
-import {setTitle} from "../../util/utils";
-import emailjs from 'emailjs-com';
-const nodemailer = require('nodemailer');
+import CustomButton from "../../common/custom-button/custom-button.component";
+import {setTitle} from "../../../util/utils";
+import FormInput from "../../common/form-input/form-input.component";
+import TextAreaInput from "../../common/text-area/text-area.component";
 
 export default class Contact extends Component
 {
@@ -46,18 +46,23 @@ export default class Contact extends Component
             <div className="contact-component">
                 <form onSubmit={this.sendEmail}>
                     <h1>Contact Us</h1>
-                    <div className="title">
-                        Email:&nbsp;<span className="mandatory">*</span>
-                    </div>
-                    <input value={this.state.from_email} className="input-field" type="text" size="100"
-                           name="from_email"
-                           onChange={this.setField} />
-                    <div className="title">
-                        Message:&nbsp;<span className="mandatory">*</span>
-                    </div>
-                    <textarea value={this.state.html_message} className="input-field" rows="4" cols="100"
-                              name="html_message"
-                              onChange={this.setField} />
+                    <FormInput
+                        label="Email"
+                        required
+                        value={this.state.from_email}
+                        type="text"
+                        size="100"
+                        name="from_email"
+                        handleChange={this.setField}
+                    />
+                    <TextAreaInput
+                        label="Message"
+                        required
+                        value={this.state.html_message}
+                        rows="4" cols="100"
+                        name="html_message"
+                        handleChange={this.setField}
+                    />
                     <div className="submit">
                         <CustomButton onClick={this.onSubmit}>Submit</CustomButton>
                     </div>

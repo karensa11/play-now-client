@@ -1,0 +1,35 @@
+.account-section-component {
+  color: white;
+
+  .button-section {
+    margin-top: 10px;
+
+    button {
+      width: 150px;
+      border-radius: 10px;
+      border: none;
+      font-family: inherit;
+      font-weight: bold;
+      color: white;
+      height: 25px;
+
+      &:hover {
+        color: yellow;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .register-button {
+      background-color: green;
+    }
+
+    .login-button {
+      background-color: gray;
+    }
+  }
+}

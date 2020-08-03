@@ -1,0 +1,35 @@
+$main-color: black;
+$sub-color: white;
+
+.form-area-group-component {
+  position: relative;
+  margin: 10px 0;
+
+  textarea {
+    resize: none;
+  }
+
+  .form-area {
+    background: #222;
+    border-radius: 2px;
+    border: 1px solid #aaa;
+    color: white;
+    font-size: 25px;
+    padding: 5px 20px;
+
+    &:focus {
+      background-color: #aaa;
+      color: black;
+    }
+  }
+
+  .title {
+    font-size: 20px;
+    margin: 15px 0;
+
+    .mandatory {
+      color: red;
+      font-size: 25px;
+    }
+  }
+}

@@ -2,9 +2,9 @@ export function appendLine(text, textToAppend) {
     return text + textToAppend + "\n";
 }
 
-export function setTitle(toAppend: string) {
+export function setTitle(toAppend) {
     document.title =
         toAppend ?
-            "Play Now | " + toAppend :
+            toAppend + " | Play Now" :
             "Play Now";
 }

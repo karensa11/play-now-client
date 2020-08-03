@@ -1,8 +1,8 @@
 import React from "react";
 import "./info.styles.scss";
 import {Switch, Route} from "react-router-dom";
-import About from "../../about/about.component";
-import Contact from "../../contact/contact.component";
+import About from "../../info/about/about.component";
+import Contact from "../../info/contact/contact.component";
 
 export default function Info({match}) {
     return (
