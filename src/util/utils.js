@@ -8,3 +8,4 @@ export function setTitle(toAppend) {
             toAppend + " | Play Now" :
             "Play Now";
 }
+

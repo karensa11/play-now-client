@@ -43,9 +43,36 @@ export async function createUserProfileDocument(user) {
 }
 
 export async function checkUserExistsByMail(email) {
-    const snapshot = await firestore
-        .collection("users")
-        .where("email", "==", email)
-        .get();
-    return snapshot.size === 1;
+    try {
+        const snapshot = await firestore
+            .collection("users")
+            .where("email", "==", email)
+            .get();
+        return snapshot.size === 1;
+    } catch (err) {
+        console.log("failed to get " +err.message);
+        return true;
+    }
+}
+
+export async function updateUserDetails(userDetails) {
+    console.log(userDetails);
+    try {
+        await firestore
+            .doc(`users/${userDetails.id}`)
+            .set(userDetails);
+    } catch (err) {
+        console.log("failed to update "+err.message);
+        throw err;
+    }
+}
+
+export async function updatePassword(newPassword) {
+    try {
+        const user = auth.currentUser;
+        await user.updatePassword(newPassword);
+    } catch (err) {
+        console.log("failed to update "+err.message);
+        throw err;
+    }
 }

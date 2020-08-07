@@ -5,25 +5,33 @@
   .content {
     width: 80%;
 
-    .basic-details {
-      padding-top: 50px;
-      display: flex;
-      justify-content: center;
-      background-color: #242832;
-      height: 70px;
-
-      .title {
-        font-weight: bold;
-      }
-
-      .value {
-        color: #aaa;
-      }
-    }
     .const-details {
       margin-top: 20px;
       display: flex;
       justify-content: space-between;
+
+      .side-section {
+        width: 45%;
+      }
     }
+
+    .image-border {
+      margin-top: 20px;
+      border-top: 1px solid #555;
+      border-bottom: 1px solid #555;
+      font-size: 20px;
+      padding-bottom: 20px;
+      color: #888;
+
+      .title {
+        padding-top: 20px;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
   }
 }

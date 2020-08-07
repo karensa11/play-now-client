@@ -3,44 +3,115 @@ import "./account-details.styles.scss";
 import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
 import {currentUserSelector} from "../../../redux/user/user-selector";
-import dateFormat from "dateformat";
 import FormInput from "../../common/form-input/form-input.component";
 import {setTitle} from "../../../util/utils";
+import CustomButton from "../../common/custom-button/custom-button.component";
+import {updatePassword, updateUserDetails} from "../../../util/firebase";
+import {objectNotEmpty} from "../../../util/objectUtils";
+import PasswordConfirm from "../../common/password-confirm/password-confirm-input.component";
+import ImagesTableSelection from "../../common/items-table-selection/images-table-selection.component";
+import avatars from "../../../data/avatars";
+import BasicAccountDetails from "../basic-account-details/basic-acount-details.component";
 
 class AccountDetails extends Component{
     constructor(props) {
         super(props);
-        console.log("AccountDetails ctor");
+        this.state = {
+            displayName: this.props.currentUser.displayName,
+            password: "",
+            avatarId: this.props.currentUser.avatarId,
+            resetPassword: false,
+            selectedAvatar: this.props.currentUser.selectedAvatar,
+            invalidValues: {},
+            updateMessage: null
+        };
     }
     componentDidMount() {
         setTitle("My Account");
     }
+    componentDidUpdate() {
+        this.state.resetPassword && this.setState({resetPassword: false});
+    }
+    handleChange = (name, value, isValid) => {
+        const invalidValues = {...this.state.invalidValues};
+        invalidValues[name] = !isValid;
+        this.setState({[name]: value, shouldShowUpdateSuccessMessage: false});
+    };
+    selectAvatar = (event) => {
+        const {id} = event.target;
+        this.setState({avatarId: +id, shouldShowUpdateSuccessMessage: false});
+    };
+    handleSubmit = async (event) => {
+        event.preventDefault();
+        const {displayName, password, avatarId, invalidValues} = this.state;
+        const {currentUser} = this.props;
+        if(objectNotEmpty(invalidValues)){
+            return;
+        }
+        if(displayName !== currentUser.displayName || avatarId !== currentUser.avatarId)
+        {
+            try {
+                await updateUserDetails({
+                    ...this.props.currentUser,
+                    displayName: displayName,
+                    avatarId: avatarId
+                })
+            } catch (err) {
+                alert("failed to update");
+            }
+        }
+        if(password !== "") {
+            try {
+                await updatePassword(password);
+                alert("your password was successfully updated");
+                this.setState({password: "", resetPassword: true});
+            } catch (err) {
+                alert("failed to update");
+            }
+        }
+    };
 
     render() {
-        const {currentUser} = this.props;
-        const presentationDate = new Date(currentUser.createAt.seconds * 1000);
-        const userCreationDate = dateFormat(presentationDate, "dd-mm-yyyy hh:MM:ss");
+        const {displayName, resetPassword, avatarId} = this.state;
         return (
             <div className="account-details-component">
                 <div className="content">
-                    <div className="basic-details">
-                        <span className="title">Email :</span>&nbsp;
-                        <span className="value">{currentUser.email}</span>
-                        &nbsp;&nbsp;&nbsp;
-                        <span className="title">Member since :</span>&nbsp;
-                        <span className="value">{userCreationDate}</span>
-                    </div>
+                    <BasicAccountDetails />
                     <div className="const-details">
-                        <div>
+                        <div className="side-section">
                             <FormInput
                                 name="displayName"
                                 label="Display Name"
                                 required
-                                value={currentUser.displayName}
+                                handleChange={this.handleChange}
+                                value={displayName}
                             />
                         </div>
-                        <div>
+                        <div className="side-section">
+                            <PasswordConfirm
+                                name="password"
+                                handleChange={this.handleChange}
+                                resetPassword={resetPassword}
+                                />
                         </div>
+                    </div>
+                    <div className="image-border">
+                        <div className="title">
+                            Select Avatar
+                        </div>
+                        <ImagesTableSelection
+                            items={avatars}
+                            bulkSize={20}
+                            selectedItemId={avatarId}
+                            itemRenderer={(item) => (
+                                <img src={item.url} alt={item.id} id={item.id} onClick={this.selectAvatar} />
+                            )}
+                        />
+                    </div>
+                    <div className="buttons">
+                        <CustomButton onClick={this.handleSubmit}>
+                            Save
+                        </CustomButton>
                     </div>
                 </div>
             </div>

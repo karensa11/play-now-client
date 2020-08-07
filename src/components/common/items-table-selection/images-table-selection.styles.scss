@@ -1,0 +1,60 @@
+.items-selection-component {
+
+  .items {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin: 20px 0;
+
+    .item {
+      margin: 5px 10px;
+
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 15px;
+        padding: 4px;
+        border: 2px solid rgba(0, 0, 0, 0);
+
+        &:hover {
+          border: 2px solid #bbb;
+          opacity: 0.8;
+        }
+      }
+
+      &.selected-item {
+        img {
+          border: 2px solid #ffb;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 0 5px;
+      height: 40px;
+      background-color: #333;
+      color: white;
+      font-family: inherit;
+      text-transform: lowercase;
+      font-size: 20px;
+      line-height: 20px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      padding: 0 20px;
+      font-weight: 400;
+
+      &.selected {
+        background-color: #666;
+      }
+
+      &:hover {
+        background-color: #666;
+      }
+    }
+  }
+}

@@ -2,15 +2,30 @@ import React, {Component} from "react";
 import "./form-input.styles.scss";
 import viewIcon from "../../../assets/view.png";
 import hideIcon from "../../../assets/hide.png";
+import {validateEmail, validatePassword} from "../../../util/validators";
+import {stringNotEmpty} from "../../../util/objectUtils";
 
-const PASSWORD_TYPE = "password";
+export const INPUT_TYPES = {
+    PASSWORD: "password",
+    EMAIL: "email"
+};
 
 export default class FormInput extends Component
 {
     constructor(props) {
         super(props);
         this.state = {
-            passwordHidden: true
+            passwordHidden: true,
+            internalValidationMessage: null,
+            value: null
+        }
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {name, forceValidate} = this.props;
+        const {value} = this.state;
+        if(forceValidate) {
+            const isValid = this.validate(value);
+            this.props.handleChange(name, value, isValid);
         }
     }
 
@@ -22,34 +37,60 @@ export default class FormInput extends Component
     };
 
     handleChange = (event) => {
-        const {value} = event.target;
-        this.props.validator && this.props.validator(value);
-        this.props.handleChange(event);
+        const {name, value} = event.target;
+        const isValid = this.validate(value);
+        this.props.handleChange(name, value, isValid);
+        this.setState({value: value});
+    };
+
+    validate = (value) => {
+        const {required, label, type} = this.props;
+        let internalValidationMessage = null;
+        if(required && !stringNotEmpty(value)) {
+            internalValidationMessage = `${label} is required`;
+        }
+        else {
+            switch (type) {
+                case INPUT_TYPES.PASSWORD: {
+                    const validationResult = validatePassword(value);
+                    internalValidationMessage = !validationResult && "password should contain 6-8 ABC/abc characters";
+                } break;
+                case INPUT_TYPES.EMAIL: {
+                    const validationResult = validateEmail(value);
+                    internalValidationMessage = !validationResult && "invalid email";
+                } break;
+                default: break;
+            }
+        }
+        this.setState({internalValidationMessage: internalValidationMessage});
+        return (typeof internalValidationMessage !== "undefined");
     };
 
     render() {
-        const {type, notifications} = this.props;
-        const {passwordHidden} = this.state;
-        const notificationMessage = notifications && notifications[this.props.name];
+        const {type, validationMessage} = this.props;
+        const {passwordHidden, internalValidationMessage} = this.state;
         const otherProps = {...this.props};
+        const message = internalValidationMessage || validationMessage;
         delete otherProps.type;
         delete otherProps.handleChange;
-        const inputType = type === PASSWORD_TYPE && this.state.passwordHidden ?
+        delete otherProps.validationMessage;
+        delete otherProps.forceValidate;
+        const inputType = type === INPUT_TYPES.PASSWORD && this.state.passwordHidden ?
             "password" : "text";
         const inputClassName =
             `
             ${type} 
             ${passwordHidden ? "hidden":""} 
-            ${notificationMessage ? "invalid":""} 
+            ${message ? "invalid":""} 
             form-input`;
         return (
             <div className="form-input-group-component">
                 <div className="title">
-                    {this.props.label}
+                    <div>{this.props.label}</div>
                     {this.props.required &&
-                        <span>
+                        <div>
                             &nbsp;<span className="mandatory">*</span>
-                        </span>
+                        </div>
                     }
                 </div>
                 <div>
@@ -58,7 +99,7 @@ export default class FormInput extends Component
                             onChange={this.handleChange} {...otherProps}
                             autoComplete="current-password"
                     />
-                    {type === PASSWORD_TYPE &&
+                    {type === INPUT_TYPES.PASSWORD &&
                         <span>
                             &nbsp;&nbsp;
                             {this.state.passwordHidden ?
@@ -70,9 +111,9 @@ export default class FormInput extends Component
 
                     }
                 </div>
-                {notificationMessage &&
+                {message &&
                     <div className="notification">
-                        {notificationMessage}
+                        {message}
                     </div>
                 }
             </div>
