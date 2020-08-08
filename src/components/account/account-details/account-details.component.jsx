@@ -9,9 +9,10 @@ import CustomButton from "../../common/custom-button/custom-button.component";
 import {updatePassword, updateUserDetails} from "../../../util/firebase";
 import {objectNotEmpty} from "../../../util/objectUtils";
 import PasswordConfirm from "../../common/password-confirm/password-confirm-input.component";
-import ImagesTableSelection from "../../common/images-table-selection/images-table-selection.component";
+import ItemsTable from "../../common/items-table/items-table.component";
 import avatars from "../../../data/avatars";
 import BasicAccountDetails from "../basic-account-details/basic-acount-details.component";
+import UserAvatar from "../user-avatar/user-avatar.component";
 
 class AccountDetails extends Component{
     constructor(props) {
@@ -106,12 +107,12 @@ class AccountDetails extends Component{
                                 <div className="title">
                                     Select Avatar
                                 </div>
-                                <ImagesTableSelection
+                                <ItemsTable
                                     items={avatars}
                                     bulkSize={20}
                                     selectedItemId={avatarId}
                                     itemRenderer={(item) => (
-                                        <img src={item.url} alt={item.id} id={item.id} onClick={this.selectAvatar} />
+                                        <UserAvatar item={item} onClick={this.selectAvatar} />
                                     )}
                                 />
                             </div>

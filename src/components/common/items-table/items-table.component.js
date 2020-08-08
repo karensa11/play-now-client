@@ -1,9 +1,8 @@
 import React, {Component} from "react";
-import "./images-table-selection.styles.scss";
-import avatars from "../../../data/avatars";
+import "./items-table.styles.scss";
 import {createIndexArr} from "../../../util/objectUtils";
 
-export default class ImagesTableSelection extends Component{
+export default class ItemsTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -21,10 +20,10 @@ export default class ImagesTableSelection extends Component{
         this.setCurrentBulk(currentBulk);
     }
     calculateCurrentItems = (currentBulk) => {
-        const {bulkSize} = this.props;
+        const {bulkSize, items} = this.props;
         const bulkStart = bulkSize * currentBulk;
         const bulkEnd = bulkSize * (currentBulk + 1);
-        return avatars.filter((value, index) => (index >= bulkStart && index < bulkEnd));
+        return items.filter((value, index) => (index >= bulkStart && index < bulkEnd));
     };
 
     setCurrentBulk = (currentBulk) => {
@@ -59,7 +58,7 @@ export default class ImagesTableSelection extends Component{
         const {selectedItemId} = this.props;
         const {bulksNumber, bulksArr} = this;
         return (
-            <div className="items-selection-component">
+            <div className="items-table-component">
                 <div className="items">
                     {itemsToDisplay.map(item => (
                         <div key={item.id} className={`item ${item.id === selectedItemId ? "selected-item" : ""}`}
@@ -68,26 +67,28 @@ export default class ImagesTableSelection extends Component{
                         </div>
                     ))}
                 </div>
-                <div className="pagination">
-                    {currentBulk > 1 &&
-                        <span>
-                            <button onClick={this.goToFirst}>&laquo; First</button>
-                            <button onClick={this.paginatePrevious}>&lsaquo; Previous</button>
-                        </span>
-                    }
-                    {bulksArr.map(number => (
-                        <button key={number} className={`${number === currentBulk ? "selected" : ""}`}
-                                value={number} onClick={this.setCurrentBulkBtn}>
-                            {number}
-                        </button>
-                    ))}
-                    {currentBulk < bulksNumber &&
-                        <span>
-                            <button onClick={this.paginateNext}>Next &rsaquo;</button>
-                            <button onClick={this.goToLast}>Last &raquo;</button>
-                        </span>
-                    }
-                </div>
+                {bulksNumber > 1 &&
+                    <div className="pagination">
+                        {currentBulk > 1 &&
+                            <span>
+                                <button onClick={this.goToFirst}>&laquo; First</button>
+                                <button onClick={this.paginatePrevious}>&lsaquo; Previous</button>
+                            </span>
+                        }
+                        {bulksArr.map(number => (
+                            <button key={number} className={`${number === currentBulk ? "selected" : ""}`}
+                                    value={number} onClick={this.setCurrentBulkBtn}>
+                                {number}
+                            </button>
+                        ))}
+                        {currentBulk < bulksNumber &&
+                            <span>
+                                <button onClick={this.paginateNext}>Next &rsaquo;</button>
+                                <button onClick={this.goToLast}>Last &raquo;</button>
+                            </span>
+                        }
+                    </div>
+                }
             </div>
         )
     }

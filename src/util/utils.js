@@ -1,3 +1,5 @@
+const createHistory = require("history").createBrowserHistory;
+
 export function appendLine(text, textToAppend) {
     return text + textToAppend + "\n";
 }
@@ -12,3 +14,8 @@ export function setTitle(toAppend) {
             "Play Now";
 }
 
+export function navigateToAndRefresh(history, url) {
+    history.push(url);
+    const historyBack = createHistory();
+    historyBack.go(0);
+}

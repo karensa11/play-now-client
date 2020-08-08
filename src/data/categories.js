@@ -1,46 +1,46 @@
 const data = [
     {
-        code: "kids",
+        id: "kids",
         displayName: "Kids",
         imageUrl: "https://i.ibb.co/bQt4Bbk/kids.jpg"
     },
     {
-        code: "card",
+        id: "card",
         displayName: "Card",
         imageUrl: "https://i.ibb.co/7j3rZyp/card.jpg"
     },
     {
-        code: "fighting",
+        id: "fighting",
         displayName: "Fighting",
         imageUrl: "https://i.ibb.co/2KVXBf5/fighting.jpg"
     },
     {
-        code: "funny",
+        id: "funny",
         displayName: "Funny",
         imageUrl: "https://i.ibb.co/883QR9P/funny.jpg"
     },
     {
-        code: "puzzle",
+        id: "puzzle",
         displayName: "Puzzle",
         imageUrl: "https://i.ibb.co/stfNhJX/puzzle.jpg"
     },
     {
-        code: "racing",
+        id: "racing",
         displayName: "Racing",
         imageUrl: "https://i.ibb.co/NshGhz5/racing.jpg"
     },
     {
-        code: "shooting",
+        id: "shooting",
         displayName: "Shooting",
         imageUrl: "https://i.ibb.co/6XV9Spw/shooting.jpg"
     },
     {
-        code: "arcade",
+        id: "arcade",
         displayName: "Arcade",
         imageUrl: "https://i.ibb.co/BVYDjzL/arcade.png"
     },
     {
-        code: "political",
+        id: "political",
         displayName: "Political",
         imageUrl: "https://i.ibb.co/xfgJYp9/political.jpg"
     },

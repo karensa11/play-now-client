@@ -85,12 +85,10 @@ export default class Login extends Component
                                 <ButtonTextAndIcon
                                     text="login with facebook"
                                     iconImage={facebookIcon}
-                                    inverted
                                     onClick={signInWithFacebook} />
                                 <ButtonTextAndIcon
                                     text="login with gmail"
                                     iconImage={googleIcon}
-                                    inverted
                                     onClick={signInWithGoogle} />
                             </div>
                         </div>

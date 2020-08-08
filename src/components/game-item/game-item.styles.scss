@@ -1,0 +1,33 @@
+.game-item-component {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  width: 180px;
+  background-color: black;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px #222;
+  border: 1px solid #666;
+
+  .game-item-content {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      margin-top: 5px;
+      height: 150px;
+      width: 150px;
+    }
+
+    .name {
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+      font-weight: bold;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
