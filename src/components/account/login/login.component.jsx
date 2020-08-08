@@ -2,9 +2,12 @@ import React, {Component} from "react";
 import "./login.styles.scss";
 import FormInput, {INPUT_TYPES} from "../../common/form-input/form-input.component";
 import CustomButton from "../../common/custom-button/custom-button.component";
-import {auth, signInWithGoogle} from "../../../util/firebase";
+import {auth, signInWithFacebook, signInWithGoogle} from "../../../util/firebase";
 import {setTitle} from "../../../util/utils";
 import {eitherStringIsEmpty, objectNotEmpty} from "../../../util/objectUtils";
+import ButtonTextAndIcon from "../../common/button-text-and-icon/button-text-and-icon.component";
+import googleIcon from "../../../assets/site-icons/gmail.png";
+import facebookIcon from "../../../assets/site-icons/facebook.jpg";
 
 export default class Login extends Component
 {
@@ -78,12 +81,18 @@ export default class Login extends Component
                             <CustomButton onClick={this.handleSubmit}>
                                 Login
                             </CustomButton>
-                            <CustomButton
-                                isSignInWithGoogle
-                                inverted
-                                onClick={signInWithGoogle}>
-                                Login With Gmail
-                            </CustomButton>
+                            <div className="right">
+                                <ButtonTextAndIcon
+                                    text="login with facebook"
+                                    iconImage={facebookIcon}
+                                    inverted
+                                    onClick={signInWithFacebook} />
+                                <ButtonTextAndIcon
+                                    text="login with gmail"
+                                    iconImage={googleIcon}
+                                    inverted
+                                    onClick={signInWithGoogle} />
+                            </div>
                         </div>
                     </form>
                 </div>

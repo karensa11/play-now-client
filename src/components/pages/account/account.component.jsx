@@ -1,6 +1,6 @@
 import React from "react";
 import "./account.styles.scss";
-import Login from "../../account/login/login.component";
+import Login from "../../account/login/login.component.jsx";
 import {Switch, Route, Redirect} from "react-router-dom";
 import {currentUserSelector} from "../../../redux/user/user-selector";
 import {createStructuredSelector} from "reselect";

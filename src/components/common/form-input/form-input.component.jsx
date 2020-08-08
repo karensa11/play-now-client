@@ -80,8 +80,8 @@ export default class FormInput extends Component
         const inputClassName =
             `
             ${type} 
-            ${passwordHidden ? "hidden":""} 
-            ${message ? "invalid":""} 
+            ${passwordHidden ? "hidden" : ""} 
+            ${message ? "invalid" : ""} 
             form-input`;
         return (
             <div className="form-input-group-component">

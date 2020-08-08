@@ -6,7 +6,7 @@ import CategoryItem from "../category-item/category-item.component";
 const ITEM_SIZE = 300;
 
 function calculatePageSize() {
-    return Math.round((window.innerWidth - 100) / ITEM_SIZE)+1;
+    return Math.round((window.innerWidth - 100) / ITEM_SIZE) + 1;
 }
 
 export default class CategoriesStripe extends Component {
@@ -44,7 +44,7 @@ export default class CategoriesStripe extends Component {
                 <div className="categories-container"
                      style={{
                         transform: `translate3d(-${this.state.startIndex * ITEM_SIZE}px, 0px, 0px)`,
-                        transition: `all 0.25s ease 0s`,
+                        transition: "all 0.25s ease 0s",
                     }}>
                     {categories.map(category => {
                         return (

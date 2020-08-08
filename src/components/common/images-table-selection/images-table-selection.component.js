@@ -76,7 +76,7 @@ export default class ImagesTableSelection extends Component{
                         </span>
                     }
                     {bulksArr.map(number => (
-                        <button key={number} className={`${number === currentBulk ? "selected":""}`}
+                        <button key={number} className={`${number === currentBulk ? "selected" : ""}`}
                                 value={number} onClick={this.setCurrentBulkBtn}>
                             {number}
                         </button>

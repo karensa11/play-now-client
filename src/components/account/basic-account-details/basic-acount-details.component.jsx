@@ -10,7 +10,6 @@ function BasicAccountDetails ({currentUser}) {
     const {email, createAt, avatarId} = currentUser;
     const userCreationDate = dateFormat(new Date(createAt.seconds * 1000), "dd-mm-yyyy hh:MM:ss");
     const selectedAvatar = avatars.filter(item => item.id === avatarId)[0];
-    console.log(selectedAvatar);
     return (
         <div className="basic-account-details-component">
             <div className="details">

@@ -21,20 +21,25 @@ export const firestore = firebase.firestore();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({prompt: "select_account"});
 
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+facebookProvider.setCustomParameters({"display": "popup"});
+
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider);
 
 export async function createUserProfileDocument(user) {
     const ref = firestore.doc(`users/${user.uid}`);
     const snapshot = await ref.get();
     if(!snapshot.exists) {
         const {displayName, email, isInternal} = user;
+        const internal = !!isInternal;
         const createAt = new Date();
         try {
             await ref.set({
                 displayName,
                 email,
                 createAt,
-                isInternal
+                internal
             })
         } catch (err)  {
             console.log("failed to create " + err.message);
@@ -51,7 +56,7 @@ export async function checkUserExistsByMail(email) {
             .get();
         return snapshot.size === 1;
     } catch (err) {
-        console.log("failed to get " +err.message);
+        console.log("failed to get " + err.message);
         return true;
     }
 }
@@ -63,7 +68,7 @@ export async function updateUserDetails(userDetails) {
             .doc(`users/${userDetails.id}`)
             .set(userDetails);
     } catch (err) {
-        console.log("failed to update "+err.message);
+        console.log("failed to update " + err.message);
         throw err;
     }
 }
@@ -73,7 +78,7 @@ export async function updatePassword(newPassword) {
         const user = auth.currentUser;
         await user.updatePassword(newPassword);
     } catch (err) {
-        console.log("failed to update "+err.message);
+        console.log("failed to update " + err.message);
         throw err;
     }
 }

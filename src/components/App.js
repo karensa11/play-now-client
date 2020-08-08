@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, {Component} from "react";
+import "./App.css";
 import Header from "./layout/header/header.component";
 import {Switch, Route} from "react-router-dom";
 import Home from "./pages/home/home.component";
@@ -14,6 +14,8 @@ import AccountManagement from "./pages/account/account.component";
 class App extends Component {
     componentDidMount() {
         this.unsubscribeFromAuth = auth.onAuthStateChanged( async user => {
+            console.log("logged in with user");
+            console.log(user);
             if(user) {
                 const userRef = await createUserProfileDocument(user);
                 userRef.onSnapshot(snapshot => {

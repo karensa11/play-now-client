@@ -3,7 +3,8 @@ import {firebaseConfig} from "../../util/firebase";
 import React from "react";
 
 export default function ReCaptha() {
+    const {apiKey} = firebaseConfig;
     return (
-        <ReCAPTCHA sitekey={firebaseConfig.apiKey}/>
+        <ReCAPTCHA sitekey={apiKey}/>
     )
 }

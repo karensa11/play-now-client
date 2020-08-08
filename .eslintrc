@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "mocha": true
+  },
+  "rules": {
+    "linebreak-style": 0,
+    "object-curly-spacing": [2, "never"],
+    "max-len": [2, {"code": 120, "ignorePattern": "^import"}],
+    "max-lines": ["error", 300],
+    "no-trailing-spaces": 0,
+    "quotes": [2, "double"],
+    "space-infix-ops": ["error", { "int32Hint": false }]
+  }
+}

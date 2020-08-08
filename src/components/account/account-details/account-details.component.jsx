@@ -9,7 +9,7 @@ import CustomButton from "../../common/custom-button/custom-button.component";
 import {updatePassword, updateUserDetails} from "../../../util/firebase";
 import {objectNotEmpty} from "../../../util/objectUtils";
 import PasswordConfirm from "../../common/password-confirm/password-confirm-input.component";
-import ImagesTableSelection from "../../common/items-table-selection/images-table-selection.component";
+import ImagesTableSelection from "../../common/images-table-selection/images-table-selection.component";
 import avatars from "../../../data/avatars";
 import BasicAccountDetails from "../basic-account-details/basic-acount-details.component";
 
@@ -75,7 +75,7 @@ class AccountDetails extends Component{
 
     render() {
         const {displayName, resetPassword, avatarId} = this.state;
-        const {isInternal} = this.props.currentUser;
+        const {internal} = this.props.currentUser;
         return (
             <div className="account-details-component">
                 <form>
@@ -92,7 +92,7 @@ class AccountDetails extends Component{
                                         value={displayName}
                                     />
                                 </div>
-                                {isInternal &&
+                                {internal &&
                                     <div className="side-section">
                                         <PasswordConfirm
                                             name="password"
