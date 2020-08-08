@@ -1,3 +1,8 @@
-.category-overview-page {
+@import "../../../util/_variables";
 
+.category-overview-page {
+  background-color: #45464e;
+  padding: 20px;
+  width: $main-items-width;
+  border-radius: 10px;
 }

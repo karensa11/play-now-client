@@ -36,13 +36,15 @@ class App extends Component {
             <div className="App">
                 <Header/>
                 <CategoriesStripe/>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/info" component={Info} />
-                    <Route path="/account" component={AccountManagement} />
-                    <Route path="/category/:id" component={CategoryOverview} />
-                    <Route path="/game/:id" component={GameOverview} />
-                </Switch>
+                <div className="main-section">
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/info" component={Info} />
+                        <Route path="/account" component={AccountManagement} />
+                        <Route path="/category/:id" component={CategoryOverview} />
+                        <Route path="/game/:id" component={GameOverview} />
+                    </Switch>
+                </div>
                 <Footer/>
             </div>
         );

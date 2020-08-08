@@ -1,4 +1,7 @@
+@import "../../../util/_variables";
+
 .info-page {
+  width: $main-items-width;
   margin: 0 70px;
   border-radius: 5px;
   background-color: #151515;

@@ -3,6 +3,8 @@
   height: 80px;
   border-bottom: 1px solid #111;
   box-shadow: 5px 5px 7px #222;
+  display: flex;
+  justify-content: center;
 
   .logo {
     font-weight: bold;
@@ -15,6 +17,12 @@
       color: yellow;
       cursor: pointer;
     }
+  }
+
+  .left-section {
+    position: absolute;
+    left: 10px;
+    top: 0;
   }
 
   .right-section {
