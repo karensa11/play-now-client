@@ -54,7 +54,7 @@ export default class Register extends Component{
         }
         try {
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
-            const userData = {uid: user.uid, email: user.email, displayName: "User"};
+            const userData = {uid: user.uid, email: user.email, displayName: "User", isInternal: true};
             await createUserProfileDocument(userData);
         } catch (err) {
             console.log("could not sign in "+err.message);

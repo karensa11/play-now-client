@@ -27,13 +27,14 @@ export async function createUserProfileDocument(user) {
     const ref = firestore.doc(`users/${user.uid}`);
     const snapshot = await ref.get();
     if(!snapshot.exists) {
-        const {displayName, email} = user;
+        const {displayName, email, isInternal} = user;
         const createAt = new Date();
         try {
             await ref.set({
                 displayName,
                 email,
-                createAt
+                createAt,
+                isInternal
             })
         } catch (err)  {
             console.log("failed to create " + err.message);

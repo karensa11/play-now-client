@@ -23,13 +23,13 @@ class AccountDetails extends Component{
             resetPassword: false,
             selectedAvatar: this.props.currentUser.selectedAvatar,
             invalidValues: {},
-            updateMessage: null
+            updateMessage: null // TODO - add notification for success of failure
         };
     }
     componentDidMount() {
         setTitle("My Account");
     }
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         this.state.resetPassword && this.setState({resetPassword: false});
     }
     handleChange = (name, value, isValid) => {
@@ -55,7 +55,8 @@ class AccountDetails extends Component{
                     ...this.props.currentUser,
                     displayName: displayName,
                     avatarId: avatarId
-                })
+                });
+                alert("updated details with success");
             } catch (err) {
                 alert("failed to update");
             }
@@ -65,6 +66,7 @@ class AccountDetails extends Component{
                 await updatePassword(password);
                 alert("your password was successfully updated");
                 this.setState({password: "", resetPassword: true});
+                alert("updated password with success");
             } catch (err) {
                 alert("failed to update");
             }
@@ -73,47 +75,54 @@ class AccountDetails extends Component{
 
     render() {
         const {displayName, resetPassword, avatarId} = this.state;
+        const {isInternal} = this.props.currentUser;
         return (
             <div className="account-details-component">
-                <div className="content">
-                    <BasicAccountDetails />
-                    <div className="const-details">
-                        <div className="side-section">
-                            <FormInput
-                                name="displayName"
-                                label="Display Name"
-                                required
-                                handleChange={this.handleChange}
-                                value={displayName}
-                            />
-                        </div>
-                        <div className="side-section">
-                            <PasswordConfirm
-                                name="password"
-                                handleChange={this.handleChange}
-                                resetPassword={resetPassword}
+                <form>
+                    <div className="container">
+                        <div className="content">
+                            <BasicAccountDetails />
+                            <div className="const-details">
+                                <div className="side-section">
+                                    <FormInput
+                                        name="displayName"
+                                        label="Display Name"
+                                        required
+                                        handleChange={this.handleChange}
+                                        value={displayName}
+                                    />
+                                </div>
+                                {isInternal &&
+                                    <div className="side-section">
+                                        <PasswordConfirm
+                                            name="password"
+                                            handleChange={this.handleChange}
+                                            resetPassword={resetPassword}
+                                        />
+                                    </div>
+                                }
+                            </div>
+                            <div className="image-border">
+                                <div className="title">
+                                    Select Avatar
+                                </div>
+                                <ImagesTableSelection
+                                    items={avatars}
+                                    bulkSize={20}
+                                    selectedItemId={avatarId}
+                                    itemRenderer={(item) => (
+                                        <img src={item.url} alt={item.id} id={item.id} onClick={this.selectAvatar} />
+                                    )}
                                 />
+                            </div>
+                            <div className="buttons">
+                                <CustomButton onClick={this.handleSubmit}>
+                                    Save
+                                </CustomButton>
+                            </div>
                         </div>
                     </div>
-                    <div className="image-border">
-                        <div className="title">
-                            Select Avatar
-                        </div>
-                        <ImagesTableSelection
-                            items={avatars}
-                            bulkSize={20}
-                            selectedItemId={avatarId}
-                            itemRenderer={(item) => (
-                                <img src={item.url} alt={item.id} id={item.id} onClick={this.selectAvatar} />
-                            )}
-                        />
-                    </div>
-                    <div className="buttons">
-                        <CustomButton onClick={this.handleSubmit}>
-                            Save
-                        </CustomButton>
-                    </div>
-                </div>
+                </form>
             </div>
         )
     }
