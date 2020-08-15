@@ -6,11 +6,13 @@ import AllCategories from "../../category/all-categories/all-categories.componen
 
 export default function Category({match}) {
     return (
-        <div className="category-component">
-            <Switch>
-                <Route exact path={`${match.path}/all`} component={AllCategories} />
-                <Route exact path={`${match.path}/:id`} component={CategoryOverview} />
-            </Switch>
+        <div className="category-page">
+            <div className="content">
+                <Switch>
+                    <Route exact path={`${match.path}/all`} component={AllCategories} />
+                    <Route exact path={`${match.path}/:id`} component={CategoryOverview} />
+                </Switch>
+            </div>
         </div>
     )
 }

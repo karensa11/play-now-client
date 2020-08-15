@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import "./categories-stripe.styles.scss";
-import categories from "../../../data/categories";
 import CategoryItem from "../category-item/category-item.component";
+import {connect} from "react-redux";
+import {createStructuredSelector} from "reselect";
+import {allCategoriesSelector} from "../../../redux/categories-and-games/categories-and-games-selector";
 
 const MAX_WIDTH = 300;
 const RIGHT_SPACE = 400;
 
-export default class CategoriesStripe extends Component {
+class CategoriesStripe extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,9 +31,7 @@ export default class CategoriesStripe extends Component {
     updateDimensions = () => {
         const categoriesWidth = window.innerWidth - RIGHT_SPACE;
         const maxItemsNum = Math.floor(categoriesWidth / (MAX_WIDTH - 25));
-        console.log("maxItemsNum " + maxItemsNum);
         const itemWidthUpdated = categoriesWidth / (maxItemsNum - 0.5) - 2;
-        console.log("itemWidthUpdated " + itemWidthUpdated);
         this.setState({pageSize: maxItemsNum, width: categoriesWidth, itemWidth: itemWidthUpdated});
     };
 
@@ -53,6 +53,7 @@ export default class CategoriesStripe extends Component {
 
     render() {
         const {startIndex, pageSize, startLocation, width, itemWidth} = this.state;
+        const {categories} = this.props;
         const endIndex = startIndex + pageSize;
         return (
             <div className="categories-stripe-component">
@@ -60,8 +61,7 @@ export default class CategoriesStripe extends Component {
                      style={{width: `${width}px`}}>
                     <div className="categories-container-layout"
                          style={{
-                             transform: `translate3d(-${startLocation}px, 0px, 0px)`,
-                             transition: "all 0.25s ease 0s",
+                             transform: `translate3d(-${startLocation}px, 0px, 0px)`
                          }}>
                         {categories.map(category => {
                             return (
@@ -88,3 +88,9 @@ export default class CategoriesStripe extends Component {
         )
     }
 }
+
+const mapStateToProps = createStructuredSelector({
+    categories: allCategoriesSelector
+});
+
+export default connect(mapStateToProps)(CategoriesStripe);

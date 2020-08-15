@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "./App.css";
+import "./App.scss";
 import Header from "./layout/header/header.component";
 import {Switch, Route} from "react-router-dom";
 import Home from "./pages/home/home.component";
@@ -12,6 +12,7 @@ import {connect} from "react-redux";
 import AccountManagement from "./pages/account/account.component";
 import GameOverview from "./pages/game-overview/game-overview.component";
 import Category from "./pages/category/category.component";
+import AllCategoriesSelection from "./layout/all-categories-selection/all-categories-selection.component";
 
 class App extends Component {
     componentDidMount() {
@@ -33,9 +34,12 @@ class App extends Component {
     render()
     {
         return (
-            <div className="App">
+            <div className="app-component">
                 <Header/>
-                <CategoriesStripe/>
+                <div className="categories-header">
+                    <CategoriesStripe/>
+                    <AllCategoriesSelection />
+                </div>
                 <div className="main-section">
                     <Switch>
                         <Route exact path="/" component={Home} />

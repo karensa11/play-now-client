@@ -1,5 +1,6 @@
 import {createSelector} from "reselect";
 import memoize from "lodash.memoize";
+import categories from "../../data/categories";
 
 const categoriesAndGamesSelector = (state) => state.categoriesAndGamesNs;
 
@@ -17,3 +18,8 @@ export const gamesByCategorySelector = memoize( categoryCode => createSelector(
     [allGamesSelector],
     allGames => allGames.filter(game => game.categoryCode === categoryCode)
 ));
+
+export const categoriesNumByDozeSelector = createSelector(
+    [allCategoriesSelector],
+    allCategories => Math.floor(categories.length / 10) * 10
+);

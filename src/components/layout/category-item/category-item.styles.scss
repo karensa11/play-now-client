@@ -1,16 +1,19 @@
+@import "../../../util/_variables";
+
 .category-item-component {
   background-color: #444;
-  border-radius: 10px;
+  border-radius: $select-items-border-radius;
   margin: 10px;
   -webkit-background-clip: padding-box;
   -moz-background-clip:    padding;
   background-clip:         padding-box;
-  box-shadow: 5px 5px 10px #222;
+  box-shadow: $select-items-box-shadow;
   display: flex;
   justify-content: space-between;
   color: white;
   font-weight: bold;
-  border: 2px solid transparent;
+  border: $select-items-default-border;
+  height: 70px;
 
   img {
     width: 100px;

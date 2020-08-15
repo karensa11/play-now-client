@@ -8,7 +8,6 @@ function CategoryItem({category, itemSize, history}) {
     const {id, imageUrl, displayName} = category;
     const navigateToCategory = () => {
         navigateToAndRefresh(history, `/category/${id}`);
-       // history.push(`/category/${id}`); TODO
     };
     return (
         <div className="category-item-component" style={{width: `${itemWidth}px`}}

@@ -1,0 +1,28 @@
+@import "../../../util/_variables";
+
+.all-categories-selection-component {
+  color: white;
+  font-weight: bold;
+  background-color: #444;
+  border-radius: $select-items-border-radius;
+  box-shadow: $select-items-box-shadow;
+  border: $select-items-default-border;
+  height: 70px;
+  margin: 10px 15px;
+  width: 250px;
+  padding-left: 20px;
+
+  h3{
+    margin: 10px;
+  }
+  h4 {
+    margin: 5px 10px;
+    font-weight: normal;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-10px);
+    transition: all 0.25s ease 0s;
+  }
+}

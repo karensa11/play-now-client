@@ -1,5 +1,4 @@
 .categories-stripe-component {
-  margin: 20px 0;
   display: flex;
   overflow: hidden;
 
@@ -13,6 +12,7 @@
       display: flex;
       justify-content: left;
       width: 21010px;
+      transition: all 0.25s ease 0s;
     }
   }
 
