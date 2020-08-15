@@ -10,8 +10,8 @@ import {auth, createUserProfileDocument} from "../util/firebase";
 import {removeCurrentUser, setCurrentUser} from "../redux/user/user-actions";
 import {connect} from "react-redux";
 import AccountManagement from "./pages/account/account.component";
-import CategoryOverview from "./pages/category-overview/category-overview.component";
 import GameOverview from "./pages/game-overview/game-overview.component";
+import Category from "./pages/category/category.component";
 
 class App extends Component {
     componentDidMount() {
@@ -41,7 +41,7 @@ class App extends Component {
                         <Route exact path="/" component={Home} />
                         <Route path="/info" component={Info} />
                         <Route path="/account" component={AccountManagement} />
-                        <Route path="/category/:id" component={CategoryOverview} />
+                        <Route path="/category" component={Category} />
                         <Route path="/game/:id" component={GameOverview} />
                     </Switch>
                 </div>

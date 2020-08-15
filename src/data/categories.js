@@ -44,6 +44,16 @@ const data = [
         displayName: "Political",
         imageUrl: "https://i.ibb.co/xfgJYp9/political.jpg"
     },
+    {
+        id: "words",
+        displayName: "Words",
+        imageUrl: "https://i.ibb.co/XD8t6Wv/words.jpg"
+    },
+    {
+        id: "music",
+        displayName: "Music",
+        imageUrl: "https://i.ibb.co/xgmKQd9/music.jpg"
+    }
 ];
 
 export default data;
