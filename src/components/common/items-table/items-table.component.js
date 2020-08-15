@@ -11,7 +11,9 @@ export default class ItemsTable extends Component{
             itemsToDisplay: []
         };
         const {items, bulkSize} = this.props;
-        this.bulksNumber = Math.round(items.length / bulkSize);
+        this.bulksNumber = items.length === bulkSize ?
+            1 : Math.floor(items.length / bulkSize) + 1;
+        console.log("this.bulksNumber " + this.bulksNumber);
         this.bulksArr = createIndexArr(1, this.bulksNumber + 1);
     }
 
@@ -21,6 +23,9 @@ export default class ItemsTable extends Component{
     }
     calculateCurrentItems = (currentBulk) => {
         const {bulkSize, items} = this.props;
+        console.log(bulkSize);
+        console.log(items);
+        console.log(currentBulk);
         const bulkStart = bulkSize * currentBulk;
         const bulkEnd = bulkSize * (currentBulk + 1);
         return items.filter((value, index) => (index >= bulkStart && index < bulkEnd));
@@ -54,7 +59,7 @@ export default class ItemsTable extends Component{
     };
 
     render() {
-        const {currentBulk, itemsToDisplay} = this.state;
+        const {currentBulk, itemsToDisplay} = this.state
         const {selectedItemId} = this.props;
         const {bulksNumber, bulksArr} = this;
         return (

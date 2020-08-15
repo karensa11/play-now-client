@@ -8,13 +8,17 @@ import GameItem from "../../game-item/game-item.component";
 function CategoryOverview({games}) {
     return (
         <div className="category-overview-page">
-            <ItemsTable
-                items={games}
-                bulkSize={20}
-                itemRenderer={(game) => (
-                    <GameItem game={game} />
-                )}
+            {games.length > 0 ?
+                <ItemsTable
+                    items={games}
+                    bulkSize={20}
+                    itemRenderer={(game) => (
+                        <GameItem game={game}/>
+                    )}
                 />
+                :
+                <div className="no-items">No games found</div>
+            }
         </div>
     )
 }

@@ -1,5 +1,10 @@
 const data = [
     {
+        id: "puzzle",
+        displayName: "Puzzle",
+        imageUrl: "https://i.ibb.co/stfNhJX/puzzle.jpg"
+    },
+    {
         id: "kids",
         displayName: "Kids",
         imageUrl: "https://i.ibb.co/bQt4Bbk/kids.jpg"
@@ -18,11 +23,6 @@ const data = [
         id: "funny",
         displayName: "Funny",
         imageUrl: "https://i.ibb.co/883QR9P/funny.jpg"
-    },
-    {
-        id: "puzzle",
-        displayName: "Puzzle",
-        imageUrl: "https://i.ibb.co/stfNhJX/puzzle.jpg"
     },
     {
         id: "racing",
@@ -53,6 +53,21 @@ const data = [
         id: "music",
         displayName: "Music",
         imageUrl: "https://i.ibb.co/xgmKQd9/music.jpg"
+    },
+    {
+        id: "html5",
+        displayName: "HTML 5",
+        imageUrl: "https://i.ibb.co/gzpQsz8/html5.jpg"
+    },
+    {
+        id: "sport",
+        displayName: "Sport",
+        imageUrl: "https://i.ibb.co/2PWTk8c/sport.jpg"
+    },
+    {
+        id: "zombie",
+        displayName: "Zombie",
+        imageUrl: "https://i.ibb.co/zQGmxFs/zombie.jpg"
     }
 ];
 

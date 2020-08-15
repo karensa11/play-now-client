@@ -13,7 +13,7 @@ function AllCategories({categories}) {
         <div className="all-categories-component">
             <ItemsTable
                 items={categories}
-                bulkSize={20}
+                bulkSize={10}
                 itemRenderer={(category) =>
                     <CategoryItem category={category} itemSize={ITEM_SIZE} />
                 }
