@@ -76,7 +76,7 @@ export default class ItemsTable extends Component{
                     <div className="pagination">
                         {currentBulk > 1 &&
                             <span>
-                                <button onClick={this.goToFirst}>&laquo; First</button>
+                                {bulksNumber > 2 && <button onClick={this.goToFirst}>&laquo; First</button>}
                                 <button onClick={this.paginatePrevious}>&lsaquo; Previous</button>
                             </span>
                         }
@@ -89,7 +89,7 @@ export default class ItemsTable extends Component{
                         {currentBulk < bulksNumber &&
                             <span>
                                 <button onClick={this.paginateNext}>Next &rsaquo;</button>
-                                <button onClick={this.goToLast}>Last &raquo;</button>
+                                {bulksNumber > 2 && <button onClick={this.goToLast}>Last &raquo;</button>}
                             </span>
                         }
                     </div>

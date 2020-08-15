@@ -23,3 +23,8 @@ export const categoriesNumByDozeSelector = createSelector(
     [allCategoriesSelector],
     allCategories => Math.floor(categories.length / 10) * 10
 );
+
+export const categoryByIdSelector = memoize(categoryId => createSelector(
+    [allCategoriesSelector],
+    allCategories => allCategories.filter(category => category.id === categoryId)[0]
+));
