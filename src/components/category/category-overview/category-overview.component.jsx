@@ -1,12 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./category-overview.styles.scss";
 import {gamesByCategorySelector, categoryByIdSelector} from "../../../redux/categories-and-games/categories-and-games-selector";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import ItemsTable from "../../common/items-table/items-table.component";
 import GameItem from "../../game-item/game-item.component";
+import {setTitle} from "../../../util/utils";
+import DropDown from "../../common/drop-down/drop-down.component";
 
+const sortOptions = [
+    {code: "latest", displayName: "Latest"},
+    {code: "popularity", displayName: "Popularity"}
+];
 function CategoryOverview({games, categoryData, history}) {
+    useEffect(() => {
+        setTitle(`${categoryData.displayName} Games`);
+    });
     const goToHomePage = () => {
         history.push("/");
     };
@@ -23,6 +32,11 @@ function CategoryOverview({games, categoryData, history}) {
                         <div className="category-name">{categoryData.displayName}</div>
                     </div>
                 </div>
+                {games.length > 0 &&
+                    <div className="right">
+                        <DropDown title="Sort By" values={sortOptions} selectedValue={sortOptions[0].code} />
+                    </div>
+                }
             </div>
             <div className="description">
                 {categoryData.description}

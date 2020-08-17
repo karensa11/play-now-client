@@ -1,0 +1,63 @@
+.drop-down-component {
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 20px;
+  min-width: 150px;
+  margin-top: -15px;
+
+  .selection {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      padding: 0 10px;
+      color: #666;
+      font-weight: 400;
+    }
+
+    button {
+      border: none;
+      background-color: black;
+      color: white;
+      font-weight: 400;
+      outline: none;
+      font-size: inherit;
+      cursor: pointer;
+
+      .arrow {
+        font-weight: bolder;
+      }
+    }
+  }
+
+  .values {
+    padding: 0;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    position: absolute;
+    margin-top: 20px;
+    min-width: inherit;
+
+    ul {
+      list-style: none;
+      padding: 2px;
+      font-weight: bolder;
+      margin: 7px 0;
+
+      li {
+        padding: 2px 15px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #eee;
+        }
+
+        &.selected {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+}

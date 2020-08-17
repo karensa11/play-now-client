@@ -13,7 +13,6 @@ export default class ItemsTable extends Component{
         const {items, bulkSize} = this.props;
         this.bulksNumber = items.length === bulkSize ?
             1 : Math.floor(items.length / bulkSize) + 1;
-        console.log("this.bulksNumber " + this.bulksNumber);
         this.bulksArr = createIndexArr(1, this.bulksNumber + 1);
     }
 
@@ -23,9 +22,6 @@ export default class ItemsTable extends Component{
     }
     calculateCurrentItems = (currentBulk) => {
         const {bulkSize, items} = this.props;
-        console.log(bulkSize);
-        console.log(items);
-        console.log(currentBulk);
         const bulkStart = bulkSize * currentBulk;
         const bulkEnd = bulkSize * (currentBulk + 1);
         return items.filter((value, index) => (index >= bulkStart && index < bulkEnd));

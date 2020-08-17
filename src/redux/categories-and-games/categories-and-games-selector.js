@@ -28,3 +28,8 @@ export const categoryByIdSelector = memoize(categoryId => createSelector(
     [allCategoriesSelector],
     allCategories => allCategories.filter(category => category.id === categoryId)[0]
 ));
+
+export const gameByIdSelector = memoize(gameId => createSelector(
+    [allGamesSelector],
+    allGames => allGames.filter(game => game.id === gameId)[0]
+));
