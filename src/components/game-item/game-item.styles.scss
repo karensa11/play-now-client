@@ -3,23 +3,27 @@
   justify-content: center;
   height: 200px;
   width: 180px;
-  background-color: #313131;
-  border: 1px solid #555;
+  background-color: #464646;
+  border: 1px solid #464646;
+  border-radius: 7px;
 
   .game-item-content {
     display: flex;
     flex-direction: column;
+    border-radius: inherit;
 
     img {
       height: 150px;
       width: 100%;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
     }
 
     .name {
       color: white;
       display: flex;
       justify-content: center;
-      padding-top: 10px;
+      padding-top: 13px;
       font-weight: bold;
       font-size: 18px;
     }

@@ -82,3 +82,13 @@ export async function updatePassword(newPassword) {
         throw err;
     }
 }
+
+export async function retrieveAllGames() {
+    try {
+        await firestore
+            .collection("games");
+    } catch (err) {
+        console.log("failed to retrieve all games " + err.message);
+        throw err;
+    }
+}

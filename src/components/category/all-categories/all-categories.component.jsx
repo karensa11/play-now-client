@@ -19,7 +19,7 @@ function AllCategories({categories}) {
                 items={categories}
                 bulkSize={10}
                 itemRenderer={(category) =>
-                    <CategoryItem category={category} itemSize={ITEM_SIZE} />
+                    <CategoryItem category={category} itemSize={ITEM_SIZE} hideBoxShadow />
                 }
                 />
         </div>

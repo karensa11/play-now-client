@@ -10,7 +10,8 @@ import DropDown from "../../common/drop-down/drop-down.component";
 
 const sortOptions = [
     {code: "latest", displayName: "Latest"},
-    {code: "popularity", displayName: "Popularity"}
+    {code: "popularity", displayName: "Popularity"},
+    {code: "rating", displayName: "Rating"}
 ];
 function CategoryOverview({games, categoryData, history}) {
     useEffect(() => {
