@@ -1,0 +1,106 @@
+.soduko {
+    color: black;
+    display: flex;
+    justify-content: center;
+
+    &-content {
+        display: flex;
+    }
+
+    &-board {
+        width: 400px;
+        margin: 0 auto;
+        height: 400px;
+
+        &-cell {
+            width: 40px;
+            height: 30px;
+            background-color: white;
+            border: 1px solid #aaa;
+            text-align: center;
+            position: relative;
+            float: left;
+            padding-top: 7px;
+            font-weight: bold;
+            font-size: 20px;
+
+            &:hover {
+                transform: scale(1.05);
+                background-color: yellow;
+                font-weight: bold;
+            }
+
+            &-border-left {
+                border-left: 3px solid black;
+            }
+
+            &-border-right {
+                border-right: 3px solid black;
+            }
+
+            &-border-bottom {
+                border-bottom: 3px solid black;
+            }
+
+            &-border-top {
+                border-top: 3px solid black;
+            }
+
+            &-preset {
+                background-color: #ccc;
+            }
+
+            &-exists {
+                color: red;
+            }
+
+            &-problematic {
+                color: purple;
+            }
+        }
+    }
+
+    &-details {
+        padding: 20px;
+        font-weight: bold;
+    }
+    &-options {
+        display: flex;
+        justify-content: center;
+        margin-left: 25px;
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .restart {
+            padding-bottom: 20px;
+        }
+    }
+    &-numbers {
+        width: 60px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+    }
+    &-number-cell {
+        width: 30px;
+        height: 20px;
+        padding: 5px 0 7px 0;
+        text-align: center;
+        border: 1px solid #555;
+        &-regular {
+            background-color: yellow;
+        }
+        &-selected {
+            background-color: #00ff0e;
+            font-weight: bold;
+        }
+        &:hover {
+            transform: scale(1.05);
+            background-color: #00ff0e;
+            font-weight: bold;
+        }
+    }
+}

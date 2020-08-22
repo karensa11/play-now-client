@@ -11,6 +11,7 @@ import {store} from "../../../redux/store";
 import {withRouter} from "react-router-dom";
 import Navigation from "../../navigation/navigation.component";
 import {goToHomePage} from "../../../util/navigationUtils";
+import GenericGameLoader from "../../game-loader/game-loader.component";
 
 class GameOverview extends PureComponent{
     constructor(props) {
@@ -30,9 +31,6 @@ class GameOverview extends PureComponent{
             this.setState({initialized: true, categoryData: categoryData});
         }
     }
-    goToHomePage = () => {
-        goToHomePage(this.props.history);
-    };
 
     render() {
         const {gameData} = this.props;
@@ -42,7 +40,7 @@ class GameOverview extends PureComponent{
                 {gameData &&
                     <div>
                         <div className="game-board">
-                            &nbsp;
+                            <GenericGameLoader gameId={gameData.id} />
                         </div>
                         {categoryData &&
                             <Navigation categoryData={categoryData} gameData={gameData} />
