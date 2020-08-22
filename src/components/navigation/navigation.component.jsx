@@ -4,7 +4,6 @@ import {withRouter} from "react-router-dom";
 import {goToCategory, goToHomePage} from "../../util/navigationUtils";
 
 function Navigation({history, categoryData, gameData}) {
-    console.log("categoryData {0}", categoryData);
     const navigateToHomePage = () => {
         goToHomePage(history);
     };

@@ -15,6 +15,7 @@ import GameOverview from "./pages/game-overview/game-overview.component";
 import Category from "./pages/category/category.component";
 import AllCategoriesSelection from "./layout/all-categories-selection/all-categories-selection.component";
 import {fetchGames} from "../util/thunk";
+import SearchPage from "./pages/search/search-page.component";
 
 class App extends Component {
     componentDidMount() {
@@ -38,21 +39,16 @@ class App extends Component {
     {
         return (
             <div className="app-component">
-                <Header/>
-                <div className="categories-header">
-                    <CategoriesStripe/>
-                    <AllCategoriesSelection />
-                </div>
                 <div className="main-section">
                     <Switch>
                         <Route exact path="/" component={Home} />
+                        <Route exact path="/search" component={SearchPage} />
                         <Route path="/info" component={Info} />
                         <Route path="/account" component={AccountManagement} />
                         <Route path="/category" component={Category} />
                         <Route path="/game/:id" component={GameOverview} />
                     </Switch>
                 </div>
-                <Footer/>
             </div>
         );
     }

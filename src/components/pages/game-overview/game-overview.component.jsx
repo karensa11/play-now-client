@@ -12,6 +12,8 @@ import {withRouter} from "react-router-dom";
 import Navigation from "../../navigation/navigation.component";
 import {goToHomePage} from "../../../util/navigationUtils";
 import GenericGameLoader from "../../game-loader/game-loader.component";
+import LayoutWithHeaderCategoriesFooter
+    from "../../layout/layout-with-header-categories-footer/layout-with-header-categories-footer.component";
 
 class GameOverview extends PureComponent{
     constructor(props) {
@@ -36,26 +38,28 @@ class GameOverview extends PureComponent{
         const {gameData} = this.props;
         const {categoryData} = this.state;
         return (
-            <div className="game-overview-page">
-                {gameData &&
-                    <div>
-                        <div className="game-board">
-                            <GenericGameLoader gameId={gameData.id} />
+            <LayoutWithHeaderCategoriesFooter>
+                <div className="game-overview-page">
+                    {gameData &&
+                        <div>
+                            <div className="game-board">
+                                <GenericGameLoader gameId={gameData.id} />
+                            </div>
+                            {categoryData &&
+                                <Navigation categoryData={categoryData} gameData={gameData} />
+                            }
+                            <hr />
+                            <h3>Game Description</h3>
+                            <p>{gameData.description}</p>
+                            <h3>Instructions</h3>
+                            <p>{gameData.instructions}</p>
+                            <hr />
+                            <div className="details">Release Date:&nbsp;&nbsp;{gameData.creationDate}</div>
+                            <div className="details">{gameData.usageCount} Plays</div>
                         </div>
-                        {categoryData &&
-                            <Navigation categoryData={categoryData} gameData={gameData} />
-                        }
-                        <hr />
-                        <h3>Game Description</h3>
-                        <p>{gameData.description}</p>
-                        <h3>Instructions</h3>
-                        <p>{gameData.instructions}</p>
-                        <hr />
-                        <div className="details">Release Date {gameData.creationDate}</div>
-                        <div className="details">{gameData.usageCount} Plays</div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
+            </LayoutWithHeaderCategoriesFooter>
         )
     }
 }

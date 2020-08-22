@@ -1,0 +1,42 @@
+.search-page {
+  width: 80%;
+  color: white;
+  font-size: 30px;
+
+  .table-header {
+    border: 1px solid #222;
+    height: 80px;
+    display: flex;
+    justify-content: left;
+    background-color: #111;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 25px;
+    padding-top: 5px;
+
+    .details {
+      width: 60%;
+      border-right: 1px solid #222;
+      height: inherit;
+    }
+    .count {
+      width: 17%;
+      height: inherit;
+      border-right: 1px solid #222;
+      text-align: center;
+      padding-top: 20px;
+    }
+    .likes {
+      width: 6%;
+      height: inherit;
+      display: flex;
+      justify-content: center;
+      padding-top: 8px;
+
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+}

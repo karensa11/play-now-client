@@ -13,3 +13,28 @@ export function goToHomePage(history) {
 export function goToCategory(history, categoryData) {
     history.push(`/category/${categoryData.id}`);
 }
+
+export function goToGame(history, gameData) {
+    history.push(`/game/${gameData.id}`);
+}
+
+export function searchWithString(history, searchString) {
+    history.push(`/search?searchText=${searchString}`);
+}
+
+export function extractQueryParam(location, param) {
+    let result = "";
+    if(location.search && location.search.length) {
+        const queryParamsStr = location.search.substr(1, location.search.length);
+        const queryParams = queryParamsStr.split("&");
+        queryParams.forEach(queryParam => {
+            if(queryParam.includes("=")){
+                const queryParamSplit = queryParam.split("=");
+                if(queryParamSplit[1].length > 0 && queryParamSplit[0] === param) {
+                    result = queryParamSplit[1];
+                }
+            }
+        });
+    }
+    return result;
+}

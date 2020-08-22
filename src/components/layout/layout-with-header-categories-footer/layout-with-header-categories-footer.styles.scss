@@ -1,0 +1,13 @@
+.layout-with-header-categories-footer-component {
+  .categories-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px;
+  }
+
+  .main-section {
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+  }
+}

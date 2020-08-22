@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import "./search-game.styles.scss";
 import search from "../../../assets/search.png";
+import {withRouter} from "react-router-dom";
+import {searchWithString} from "../../../util/navigationUtils";
 
-export default class SearchGame extends Component {
+class SearchGame extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,6 +15,11 @@ export default class SearchGame extends Component {
         const {value} = event.target;
         this.setState({searchString: value});
     };
+    search = () => {
+        const {searchString} = this.state;
+        const {history} = this.props;
+        searchWithString(history, searchString);
+    };
     render () {
         return (
             <div className="search-game-component">
@@ -20,9 +27,11 @@ export default class SearchGame extends Component {
                     <input placeholder="Search for a game..." size={30} onChange={this.setSearchString} />
                 </div>
                 <div className="right">
-                    <img src={search} alt="search" />
+                    <img src={search} alt="search" onClick={this.search} />
                 </div>
             </div>
         )
     }
 }
+
+export default withRouter(SearchGame);

@@ -7,21 +7,25 @@ import {createStructuredSelector} from "reselect";
 import {connect} from "react-redux";
 import Register from "../../account/register/register.component";
 import AccountDetails from "../../account/account-details/account-details.component";
+import LayoutWithHeaderCategoriesFooter
+    from "../../layout/layout-with-header-categories-footer/layout-with-header-categories-footer.component";
 
 function AccountManagement({match, currentUser}) {
     return (
-        <div className="account-page">
-            <Switch>
-                <Route     exact path={`${match.path}/register`}
-                           render={() => currentUser ?
-                               <Redirect to="/" /> : <Register />}
-                />
-                <Route     exact path={`${match.path}`}
-                           render={() => currentUser ?
-                               <AccountDetails /> : <Login />}
-                />
-            </Switch>
-        </div>
+        <LayoutWithHeaderCategoriesFooter>
+            <div className="account-page">
+                <Switch>
+                    <Route     exact path={`${match.path}/register`}
+                               render={() => currentUser ?
+                                   <Redirect to="/" /> : <Register />}
+                    />
+                    <Route     exact path={`${match.path}`}
+                               render={() => currentUser ?
+                                   <AccountDetails /> : <Login />}
+                    />
+                </Switch>
+            </div>
+        </LayoutWithHeaderCategoriesFooter>
     )
 }
 
