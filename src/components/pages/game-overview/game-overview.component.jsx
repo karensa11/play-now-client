@@ -1,19 +1,36 @@
-import React, {useEffect} from "react";
+import React, {PureComponent} from "react";
 import "./game-overview.styles.scss";
 import {setTitle} from "../../../util/utils";
 import {connect} from "react-redux";
 import {gameByIdSelector} from "../../../redux/categories-and-games/categories-and-games-selector";
+import {updateGameCount} from "../../../util/firebase";
 
-function GameOverview({match, gameDetails}) {
-    useEffect(() => {
-        setTitle(gameDetails.displayName);
-    });
-    const {id} = match.params;
-    return (
-        <div className="game-overview-page">
-            {id}
-        </div>
-    )
+class GameOverview extends PureComponent{
+    constructor(props) {
+        super(props);
+        this.state = {
+            initialized: false
+        }
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {gameDetails} = this.props;
+        const {initialized} = this.state;
+        if(gameDetails && !initialized) {
+            updateGameCount(gameDetails).then();
+            setTitle(gameDetails.displayName);
+            this.setState({initialized: true});
+        }
+    }
+
+    render() {
+        const {match} = this.props;
+        const {id} = match.params;
+        return (
+            <div className="game-overview-page">
+                {id}
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state, ownProps) => ({

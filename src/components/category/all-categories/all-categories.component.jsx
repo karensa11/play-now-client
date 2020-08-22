@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import "./all-categories.styles.scss";
 import ItemsTable from "../../common/items-table/items-table.component";
-import CategoryItem from "../../layout/category-item/category-item.component";
+import CategoryItem from "../../category-item/category-item.component";
 import {createStructuredSelector} from "reselect";
 import {allCategoriesSelector} from "../../../redux/categories-and-games/categories-and-games-selector";
 import {connect} from "react-redux";

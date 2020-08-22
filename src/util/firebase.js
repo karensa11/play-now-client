@@ -1,6 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/database";
+import {logError} from "./logger";
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAmzVBeFQv4rkLEEjtvVly1tHg1mig5zdo",
@@ -42,7 +44,7 @@ export async function createUserProfileDocument(user) {
                 internal
             })
         } catch (err)  {
-            console.log("failed to create " + err.message);
+            logError("createUserProfileDocument", err);
         }
     }
     return ref;
@@ -56,19 +58,18 @@ export async function checkUserExistsByMail(email) {
             .get();
         return snapshot.size === 1;
     } catch (err) {
-        console.log("failed to get " + err.message);
+        logError("checkUserExistsByMail", err);
         return true;
     }
 }
 
 export async function updateUserDetails(userDetails) {
-    console.log(userDetails);
     try {
         await firestore
             .doc(`users/${userDetails.id}`)
             .set(userDetails);
     } catch (err) {
-        console.log("failed to update " + err.message);
+        logError("updateUserDetails", err);
         throw err;
     }
 }
@@ -78,17 +79,18 @@ export async function updatePassword(newPassword) {
         const user = auth.currentUser;
         await user.updatePassword(newPassword);
     } catch (err) {
-        console.log("failed to update " + err.message);
+        logError("updatePassword", err);
         throw err;
     }
 }
 
-export async function retrieveAllGames() {
+export async function updateGameCount(gameDetails) {
     try {
         await firestore
-            .collection("games");
+            .doc(`games/${gameDetails.id}`)
+            .update({usageCount: firebase.firestore.FieldValue.increment(1)});
     } catch (err) {
-        console.log("failed to retrieve all games " + err.message);
+        logError("updateGameCount", err);
         throw err;
     }
 }

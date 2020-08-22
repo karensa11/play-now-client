@@ -1,13 +1,20 @@
 import categories from "../../data/categories";
-import games from "../../data/games";
+import types from "./categories-and-games-types";
 
 const INITIAL_STATE = {
     categories: categories,
-    games: games
+    games: []
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
-    return state;
+    switch (action.type) {
+        case types.SET_GAMES:
+            return {
+                ...state,
+                games: action.payload
+            };
+        default: return state;
+    }
 };
 
 export default reducer;

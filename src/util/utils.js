@@ -19,3 +19,9 @@ export function navigateToAndRefresh(history, url) {
     const historyBack = createHistory();
     historyBack.go(0);
 }
+
+export function extractRetrieveResultsFromFirestore(querySnapshot) {
+    const result = [];
+    querySnapshot.forEach(item => result.push(item.data()));
+    return result;
+}

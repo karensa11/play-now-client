@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./categories-stripe.styles.scss";
-import CategoryItem from "../category-item/category-item.component";
+import CategoryItem from "../../category-item/category-item.component";
 import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
 import {allCategoriesSelector} from "../../../redux/categories-and-games/categories-and-games-selector";

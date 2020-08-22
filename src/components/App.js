@@ -13,9 +13,11 @@ import AccountManagement from "./pages/account/account.component";
 import GameOverview from "./pages/game-overview/game-overview.component";
 import Category from "./pages/category/category.component";
 import AllCategoriesSelection from "./layout/all-categories-selection/all-categories-selection.component";
+import {fetchGames} from "../util/thunk";
 
 class App extends Component {
     componentDidMount() {
+        this.props.fetchGames();
         this.unsubscribeFromAuth = auth.onAuthStateChanged( async user => {
             if(user) {
                 const userRef = await createUserProfileDocument(user);
@@ -57,7 +59,8 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => ({
     setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-    removeCurrentUser: () => dispatch(removeCurrentUser())
+    removeCurrentUser: () => dispatch(removeCurrentUser()),
+    fetchGames: () => dispatch(fetchGames())
 });
 
 export default connect(null, mapDispatchToProps)(App);
