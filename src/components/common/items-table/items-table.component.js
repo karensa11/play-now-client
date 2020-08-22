@@ -60,7 +60,7 @@ export default class ItemsTable extends Component{
         const {bulksNumber, bulksArr} = this;
         return (
             <div className="items-table-component">
-                <div className="items">
+                <div className="items-table-component_items">
                     {itemsToDisplay.map(item => (
                         <div key={item.id} className={`item ${item.id === selectedItemId ? "selected-item" : ""}`}
                              value={item.id}>
@@ -69,7 +69,7 @@ export default class ItemsTable extends Component{
                     ))}
                 </div>
                 {bulksNumber > 1 &&
-                    <div className="pagination">
+                    <div className="items-table-component_pagination">
                         {currentBulk > 1 &&
                             <span>
                                 {bulksNumber > 2 && <button onClick={this.goToFirst}>&laquo; First</button>}

@@ -9,7 +9,7 @@ $sub-color: white;
     resize: none;
   }
 
-  .form-area {
+  &_form-area {
     background: #222;
     border-radius: 2px;
     border: 1px solid #aaa;
@@ -23,7 +23,7 @@ $sub-color: white;
     }
   }
 
-  .title {
+  &_title {
     font-size: 20px;
     margin: 15px 0;
 

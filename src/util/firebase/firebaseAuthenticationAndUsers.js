@@ -1,24 +1,6 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-import "firebase/database";
-import {logError} from "./logger";
-
-export const firebaseConfig = {
-    apiKey: "AIzaSyAmzVBeFQv4rkLEEjtvVly1tHg1mig5zdo",
-    authDomain: "play-now-1323c.firebaseapp.com",
-    databaseURL: "https://play-now-1323c.firebaseio.com",
-    projectId: "play-now-1323c",
-    storageBucket: "play-now-1323c.appspot.com",
-    messagingSenderId: "142862999503",
-    appId: "1:142862999503:web:6ff63db389ac53ce957cba",
-    measurementId: "G-8ZLCJDEM9X"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+import {auth, firestore} from "./firebase";
+import firebase from "firebase";
+import {logError} from "../logger";
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({prompt: "select_account"});
@@ -45,6 +27,7 @@ export async function createUserProfileDocument(user) {
             })
         } catch (err)  {
             logError("createUserProfileDocument", err);
+            throw err;
         }
     }
     return ref;
@@ -80,17 +63,6 @@ export async function updatePassword(newPassword) {
         await user.updatePassword(newPassword);
     } catch (err) {
         logError("updatePassword", err);
-        throw err;
-    }
-}
-
-export async function updateGameCount(gameDetails) {
-    try {
-        await firestore
-            .doc(`games/${gameDetails.id}`)
-            .update({usageCount: firebase.firestore.FieldValue.increment(1)});
-    } catch (err) {
-        logError("updateGameCount", err);
         throw err;
     }
 }

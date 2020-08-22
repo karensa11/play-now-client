@@ -24,7 +24,6 @@ export default class Contact extends Component
     sendEmail = (event) => {
         event.preventDefault();
         // TODO - not working //
-        console.log(this.state);
         const options = {
             method: "POST",
             headers: {
@@ -36,8 +35,6 @@ export default class Contact extends Component
                 message: this.state.html_message
             })
         };
-        console.log("options");
-        console.log(options);
         const url = "http://localhost:5600/sendContactEmail";
         fetch(url, options);
     };

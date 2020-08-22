@@ -1,5 +1,5 @@
 import ReCAPTCHA from "react-google-recaptcha/src/recaptcha";
-import {firebaseConfig} from "../../util/firebase";
+import {firebaseConfig} from "../../util/firebase/firebase";
 import React from "react";
 
 export default function ReCaptha() {

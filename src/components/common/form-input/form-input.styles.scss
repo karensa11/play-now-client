@@ -5,7 +5,7 @@ $sub-color: white;
   position: relative;
   margin: 10px 0;
 
-  .form-input {
+  &_form-input {
     width: 96%;
     border-radius: 5px;
     border: 1px solid #aaa;
@@ -37,7 +37,7 @@ $sub-color: white;
     }
   }
 
-  .password {
+  &_password {
     display: inline-block;
     width: 90%;
     margin-bottom: 0;
@@ -47,19 +47,19 @@ $sub-color: white;
     }
   }
 
-  .title {
+  &_title {
     font-size: 20px;
     margin: 15px 0;
     display: flex;
     justify-content: left;
 
-    .mandatory {
+    &-mandatory {
       color: red;
       font-size: 30px;
     }
   }
 
-  .notification {
+  &_notification {
     color: red;
   }
 }

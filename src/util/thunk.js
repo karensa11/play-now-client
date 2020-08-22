@@ -1,5 +1,5 @@
 import {setGames} from "../redux/categories-and-games/categories-and-games-actions";
-import {extractRetrieveResultsFromFirestore} from "./utils";
+import {extractRetrieveResultsFromFirestore} from "./firebase/firebase";
 
 export function fetchGames() {
     return (dispatch, getState, getFirebase) => {

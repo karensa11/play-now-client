@@ -20,36 +20,11 @@
         font-size: 35px;
         text-transform: uppercase;
       }
+    }
 
-      .navigation {
-        display: flex;
-        justify-content: center;
-        margin-left: 40px;
-        text-transform: uppercase;
-        margin-top: 10px;
-
-        .games {
-          color: red;
-          font-weight: bolder;
-          font-size: 22px;
-
-          &:hover {
-            cursor: pointer;
-            color: white;
-          }
-        }
-
-        .arrow {
-          padding: 0 5px;
-          margin-top: -5px;
-          font-size: 30px;
-        }
-
-        .category-name {
-          font-weight: bolder;
-          font-size: 22px;
-        }
-      }
+    .navigation {
+      margin-left: 40px;
+      margin-top: 10px;
     }
 
     .right {

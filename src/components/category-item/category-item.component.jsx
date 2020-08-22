@@ -1,7 +1,7 @@
 import React from "react";
 import "./category-item.styles.scss";
 import {withRouter} from "react-router-dom";
-import {navigateToAndRefresh} from "../../util/utils";
+import {navigateToAndRefresh} from "../../util/navigationUtils";
 
 function CategoryItem({category, itemSize, history, hideBoxShadow}) {
     const itemWidth = itemSize - 25;

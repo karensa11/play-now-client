@@ -6,7 +6,7 @@ import {currentUserSelector} from "../../../redux/user/user-selector";
 import FormInput from "../../common/form-input/form-input.component";
 import {setTitle} from "../../../util/utils";
 import CustomButton from "../../common/custom-button/custom-button.component";
-import {updatePassword, updateUserDetails} from "../../../util/firebase";
+import {updatePassword, updateUserDetails} from "../../../util/firebase/firebaseAuthenticationAndUsers";
 import {objectNotEmpty} from "../../../util/objectUtils";
 import PasswordConfirm from "../../common/password-confirm/password-confirm-input.component";
 import ItemsTable from "../../common/items-table/items-table.component";

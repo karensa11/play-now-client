@@ -4,7 +4,7 @@ import "./text-area.styles.scss";
 export default function TextAreaInput({handleChange, label, required, ...otherProps}) {
     return (
         <div className="form-area-group-component">
-            <div className="title">
+            <div className="form-area-group-component_title">
                 {label}
                 {required &&
                     <span>
@@ -12,7 +12,7 @@ export default function TextAreaInput({handleChange, label, required, ...otherPr
                     </span>
                 }
             </div>
-            <textarea   className="form-area"
+            <textarea   className="form-area-group-component_form-area"
                         {...otherProps}
                         onChange={handleChange} />
         </div>

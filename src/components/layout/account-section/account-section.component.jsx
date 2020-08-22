@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
 import {currentUserSelector} from "../../../redux/user/user-selector";
-import {auth} from "../../../util/firebase";
+import {auth} from "../../../util/firebase/firebase";
 
 function AccountSection({history, currentUser}) {
     const signOut = async () => {

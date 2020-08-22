@@ -79,17 +79,17 @@ export default class FormInput extends Component
             "password" : "text";
         const inputClassName =
             `
-            ${type} 
+            form-input-group-component_${type} 
             ${passwordHidden ? "hidden" : ""} 
             ${message ? "invalid" : ""} 
-            form-input`;
+            form-input-group-component_form-input`;
         return (
             <div className="form-input-group-component">
-                <div className="title">
+                <div className="form-input-group-component_title">
                     <div>{this.props.label}</div>
                     {this.props.required &&
                         <div>
-                            &nbsp;<span className="mandatory">*</span>
+                            &nbsp;<span className="form-input-group-component_title-mandatory">*</span>
                         </div>
                     }
                 </div>
@@ -112,7 +112,7 @@ export default class FormInput extends Component
                     }
                 </div>
                 {message &&
-                    <div className="notification">
+                    <div className="form-input-group-component_notification">
                         {message}
                     </div>
                 }

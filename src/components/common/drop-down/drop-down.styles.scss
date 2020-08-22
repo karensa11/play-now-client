@@ -6,15 +6,9 @@
   min-width: 150px;
   margin-top: -15px;
 
-  .selection {
+  &_selection {
     display: flex;
     justify-content: space-between;
-
-    .title {
-      padding: 0 10px;
-      color: #666;
-      font-weight: 400;
-    }
 
     button {
       border: none;
@@ -24,14 +18,19 @@
       outline: none;
       font-size: inherit;
       cursor: pointer;
-
-      .arrow {
-        font-weight: bolder;
-      }
+    }
+    &-arrow {
+      font-weight: bolder;
     }
   }
 
-  .values {
+  &_title {
+    padding: 0 10px;
+    color: #666;
+    font-weight: 400;
+  }
+
+  &_values {
     padding: 0;
     background-color: white;
     color: black;

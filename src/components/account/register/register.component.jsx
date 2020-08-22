@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import "./register.styles.scss";
 import FormInput, {INPUT_TYPES} from "../../common/form-input/form-input.component";
-import {auth, checkUserExistsByMail, createUserProfileDocument} from "../../../util/firebase";
+import {auth} from "../../../util/firebase/firebase";
+import {checkUserExistsByMail, createUserProfileDocument} from "../../../util/firebase/firebaseAuthenticationAndUsers";
 import {setTitle} from "../../../util/utils";
 import PasswordConfirm from "../../common/password-confirm/password-confirm-input.component";
 import CustomButton from "../../common/custom-button/custom-button.component";
 import {eitherStringIsEmpty, objectNotEmpty} from "../../../util/objectUtils";
+import {logError} from "../../../util/logger";
 
 export default class Register extends Component{
     constructor(props) {
@@ -57,7 +59,7 @@ export default class Register extends Component{
             const userData = {uid: user.uid, email: user.email, displayName: "User", isInternal: true};
             await createUserProfileDocument(userData);
         } catch (err) {
-            console.log("could not sign in " + err.message);
+            logError("submit register", err);
         }
     };
     render() {

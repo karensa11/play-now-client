@@ -1,7 +1,7 @@
 import React from "react";
 import "./game-item.styles.scss";
-import {navigateToAndRefresh} from "../../util/utils";
 import {withRouter} from "react-router-dom";
+import {navigateToAndRefresh} from "../../util/navigationUtils";
 
 function GameItem({game, history}) {
     const {id, displayName, imageUrl} = game;

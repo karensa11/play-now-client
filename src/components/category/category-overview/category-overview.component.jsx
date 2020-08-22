@@ -2,24 +2,21 @@ import React, {useEffect} from "react";
 import "./category-overview.styles.scss";
 import {gamesByCategorySelector, categoryByIdSelector} from "../../../redux/categories-and-games/categories-and-games-selector";
 import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
 import ItemsTable from "../../common/items-table/items-table.component";
 import GameItem from "../../game-item/game-item.component";
 import {setTitle} from "../../../util/utils";
 import DropDown from "../../common/drop-down/drop-down.component";
+import Navigation from "../../navigation/navigation.component";
 
 const sortOptions = [
     {code: "latest", displayName: "Latest"},
     {code: "popularity", displayName: "Popularity"},
     {code: "rating", displayName: "Rating"}
 ];
-function CategoryOverview({games, categoryData, history}) {
+function CategoryOverview({games, categoryData}) {
     useEffect(() => {
         setTitle(`${categoryData.displayName} Games`);
     });
-    const goToHomePage = () => {
-        history.push("/");
-    };
     return (
         <div className="category-overview-component">
             <div className="header">
@@ -28,9 +25,7 @@ function CategoryOverview({games, categoryData, history}) {
                         {categoryData.displayName} Games
                     </div>
                     <div className="navigation">
-                        <div className="games" onClick={goToHomePage}>Games</div>
-                        <div className="arrow"> &raquo; </div>
-                        <div className="category-name">{categoryData.displayName}</div>
+                        <Navigation categoryData={categoryData} />
                     </div>
                 </div>
                 {games.length > 0 &&
@@ -62,4 +57,4 @@ const mapStateToProps = (state, ownProps) => ({
     categoryData: categoryByIdSelector(ownProps.match.params.id)(state),
 });
 
-export default withRouter(connect(mapStateToProps)(CategoryOverview));
+export default connect(mapStateToProps)(CategoryOverview);

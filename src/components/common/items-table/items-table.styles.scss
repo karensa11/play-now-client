@@ -1,6 +1,6 @@
 .items-table-component {
 
-  .items {
+  &_items {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
@@ -21,7 +21,7 @@
     }
   }
 
-  .pagination {
+  &_pagination {
     display: flex;
     justify-content: center;
 

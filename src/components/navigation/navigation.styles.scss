@@ -1,0 +1,31 @@
+.navigation-component {
+  display: flex;
+  text-transform: uppercase;
+
+  &_section {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_navigate {
+    color: red;
+    font-weight: bolder;
+    font-size: 22px;
+
+    &:hover {
+      cursor: pointer;
+      color: white;
+    }
+  }
+
+  &_arrow {
+    padding: 0 5px;
+    margin-top: -5px;
+    font-size: 30px;
+  }
+
+  &_non-navigation {
+    font-weight: bolder;
+    font-size: 22px;
+  }
+}

@@ -20,18 +20,17 @@ class DropDown extends Component{
     {
         const {title, values, selectedValue, onChangeValue} = this.props;
         const {selectionOpen} = this.state;
-        console.log(selectedValue);
         return (
             <div className="drop-down-component">
-                <div className="selection">
-                    <div className="title">{title}</div>
+                <div className="drop-down-component_selection">
+                    <div className="drop-down-component_title">{title}</div>
                     <button onClick={this.changeSelectionOpenStatus}>
                         {values[0].displayName}
-                        <span className="arrow">&nbsp;&nbsp;&nbsp;&#709;</span>
+                        <span className="drop-down-component_selection-arrow">&nbsp;&nbsp;&nbsp;&#709;</span>
                     </button>
                 </div>
                 {selectionOpen &&
-                    <div className="values">
+                    <div className="drop-down-component_values">
                         <ul>
                             {values.map(value => (
                                 <li key={value.code}
