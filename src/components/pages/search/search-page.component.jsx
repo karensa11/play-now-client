@@ -7,10 +7,14 @@ import LayoutWithHeader from "../../layout/layout-with-header/layout-with-header
 import SearchItem from "../../search/search-item/search-item.component";
 import like from "../../../assets/like.png";
 
-function SearchPage({searchItems}) {
+function SearchPage({searchItems, location}) {
+    const searchText = extractQueryParam(location, "searchText");
     return (
         <LayoutWithHeader>
             <div className="search-page">
+                <div className="results-count">
+                    We found {searchItems.length} results for "{searchText}"
+                </div>
                 <div className="table-header">
                     <div className="details">&nbsp;</div>
                     <div className="count">PLAY COUNT</div>
