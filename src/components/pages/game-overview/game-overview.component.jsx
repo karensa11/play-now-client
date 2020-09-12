@@ -4,16 +4,17 @@ import {setTitle} from "../../../util/utils";
 import {connect} from "react-redux";
 import {
     categoryByIdSelector,
-    gameByIdSelector
+    gameByIdSelector, reviewsByGameSelector
 } from "../../../redux/categories-and-games/categories-and-games-selector";
 import {updateGameCount} from "../../../util/firebase/firebaseGames";
 import {store} from "../../../redux/store";
 import {withRouter} from "react-router-dom";
 import Navigation from "../../navigation/navigation.component";
-import {goToHomePage} from "../../../util/navigationUtils";
 import GenericGameLoader from "../../game-loader/game-loader.component";
 import LayoutWithHeaderCategoriesFooter
     from "../../layout/layout-with-header-categories-footer/layout-with-header-categories-footer.component";
+import GameReviews from "../../game-reviews/game-reviews.component";
+import {currentUserSelector} from "../../../redux/user/user-selector";
 
 class GameOverview extends PureComponent{
     constructor(props) {
@@ -21,7 +22,7 @@ class GameOverview extends PureComponent{
         this.state = {
             initialized: false,
             categoryData: null
-        }
+        };
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {gameData} = this.props;
@@ -35,7 +36,7 @@ class GameOverview extends PureComponent{
     }
 
     render() {
-        const {gameData} = this.props;
+        const {gameData, reviewsData, currentUser} = this.props;
         const {categoryData} = this.state;
         return (
             <LayoutWithHeaderCategoriesFooter>
@@ -56,6 +57,11 @@ class GameOverview extends PureComponent{
                             <hr />
                             <div className="details">Release Date:&nbsp;&nbsp;{gameData.creationDate}</div>
                             <div className="details">{gameData.usageCount} Plays</div>
+                            <hr />
+                            {reviewsData &&
+                                <GameReviews reviewsData={reviewsData} gameData={gameData} userData={currentUser}
+                                             isOwnGame showGameReviewOption />
+                            }
                         </div>
                     }
                 </div>
@@ -65,7 +71,9 @@ class GameOverview extends PureComponent{
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    gameData: gameByIdSelector(ownProps.match.params.id)(state)
+    gameData: gameByIdSelector(ownProps.match.params.id)(state),
+    reviewsData: reviewsByGameSelector(ownProps.match.params.id)(state),
+    currentUser: currentUserSelector(state)
 });
 
 export default withRouter(connect(mapStateToProps)(GameOverview));

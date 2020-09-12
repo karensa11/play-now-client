@@ -5,7 +5,7 @@ import {gamesBySearchTextSelector} from "../../../redux/categories-and-games/cat
 import {extractQueryParam} from "../../../util/navigationUtils";
 import LayoutWithHeader from "../../layout/layout-with-header/layout-with-header.component";
 import SearchItem from "../../search/search-item/search-item.component";
-import like from "../../../assets/like.png";
+import like from "../../../assets/like2.png";
 
 function SearchPage({searchItems, location}) {
     const searchText = extractQueryParam(location, "searchText");

@@ -1,5 +1,5 @@
 import {createSelector} from "reselect";
-import memoize from "lodash.memoize";
+import memoize from "memoize-one";
 import categories from "../../data/categories";
 import criteria from "../../util/data/games-sort-criteria";
 
@@ -13,6 +13,11 @@ export const allCategoriesSelector = createSelector(
 export const allGamesSelector = createSelector(
     [categoriesAndGamesSelector],
     categoriesAndGames => categoriesAndGames.games
+);
+
+export const allReviewsSelector = createSelector(
+    [categoriesAndGamesSelector],
+    categoriesAndGames => categoriesAndGames.reviews
 );
 
 export const gamesByCategorySelector = memoize( categoryCode => createSelector(
@@ -46,4 +51,14 @@ export const categoryByIdSelector = memoize(categoryId => createSelector(
 export const gameByIdSelector = memoize(gameId => createSelector(
     [allGamesSelector],
     allGames => allGames.filter(game => game.id === gameId)[0]
+));
+
+export const reviewsByGameSelector = memoize(gameId => createSelector(
+    [allReviewsSelector],
+    allReviews => allReviews.filter(review => review.gameId === gameId)
+));
+
+export const reviewsByUserSelector = memoize(userId => createSelector(
+    [allReviewsSelector],
+    allReviews => allReviews.filter(review => review.userId === userId)
 ));

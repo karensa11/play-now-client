@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from "react";
+import React, {Component} from "react";
 import "./category-overview.styles.scss";
 import {
     gamesByCategorySelector,
@@ -32,7 +32,6 @@ class CategoryOverview extends Component{
     };
     render()
     {
-        // TODO - check with Yuval for the sorting design //
         const {categoryData, match} = this.props;
         const {sortOptionCode} = this.state;
         const games = gamesByCategoryAndSortCriteriaSelector(match.params.id, sortOptionCode)(store.getState());

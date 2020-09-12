@@ -3,7 +3,8 @@ import types from "./categories-and-games-types";
 
 const INITIAL_STATE = {
     categories: categories,
-    games: []
+    games: [],
+    reviews: []
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -12,6 +13,11 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 games: action.payload
+            };
+        case types.SET_REVIEWS:
+            return {
+                ...state,
+                reviews: action.payload
             };
         default: return state;
     }

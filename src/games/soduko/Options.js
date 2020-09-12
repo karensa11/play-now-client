@@ -19,7 +19,7 @@ export default function Options({
                             "soduko-number-cell soduko-number-cell-selected" :
                             "soduko-number-cell soduko-number-cell-regular";
                         return (
-                            <div className={className} onClick={() => selectNumberForBoard(number)}>
+                            <div key={number} className={className} onClick={() => selectNumberForBoard(number)}>
                                 {number}
                             </div>
                         )

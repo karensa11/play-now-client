@@ -16,7 +16,7 @@ function SearchItem({history, gameData}) {
     return (
         <div className="search-item-component">
             <div className="details">
-                <img src={gameData.imageUrl} alt="game image" onClick={navigateToGame} />
+                <img src={gameData.imageUrl} alt="the game" onClick={navigateToGame} />
                 <div className="content">
                     <div className="title" onClick={navigateToGame}>
                         {gameData.displayName}

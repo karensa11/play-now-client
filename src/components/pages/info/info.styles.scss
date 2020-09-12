@@ -1,13 +1,8 @@
 @import "../../../util/_variables";
 
 .info-page {
-  width: $main-items-width;
-  margin: 0 70px;
-  border-radius: 5px;
-  background-color: #151515;
-  color: white;
-  height: 100%;
-  padding: 20px 50px;
+  @include main-page;
+
   min-height: 500px;
   box-shadow: 5px 5px 20px #222;
 }

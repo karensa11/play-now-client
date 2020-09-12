@@ -14,3 +14,6 @@ export function setTitle(toAppend) {
             "Play Now";
 }
 
+export function validateValueWithRegex(regex, value) {
+    return regex.test(value);
+}

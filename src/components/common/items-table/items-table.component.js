@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import "./items-table.styles.scss";
 import {createIndexArr} from "../../../util/objectUtils";
+import memoize from "memoize-one";
 
 export default class ItemsTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
             currentBulk: 1,
-            bulksNumber: 0,
-            itemsToDisplay: []
+            bulksNumber: 0
         };
         const {items, bulkSize} = this.props;
         this.bulksNumber = items.length === bulkSize ?
@@ -20,18 +20,10 @@ export default class ItemsTable extends Component{
         const {currentBulk} = this.state;
         this.setCurrentBulk(currentBulk);
     }
-    calculateCurrentItems = (currentBulk) => {
-        const {bulkSize, items} = this.props;
-        const bulkStart = bulkSize * currentBulk;
-        const bulkEnd = bulkSize * (currentBulk + 1);
-        return items.filter((value, index) => (index >= bulkStart && index < bulkEnd));
-    };
 
     setCurrentBulk = (currentBulk) => {
-        const itemsToDisplay = this.calculateCurrentItems(currentBulk - 1);
-        this.setState({currentBulk: currentBulk, itemsToDisplay: itemsToDisplay});
+        this.setState({currentBulk: currentBulk});
     };
-
     setCurrentBulkBtn = (event) => {
         event.preventDefault();
         const {value} = event.target;
@@ -53,11 +45,17 @@ export default class ItemsTable extends Component{
         event.preventDefault();
         this.setCurrentBulk(this.bulksArr);
     };
+    calculateItemsToDisplay = memoize((items, bulkStart, bulkEnd) => {
+        return items.filter((value, index) => (index >= bulkStart && index < bulkEnd))
+    });
 
     render() {
-        const {currentBulk, itemsToDisplay} = this.state
-        const {selectedItemId} = this.props;
+        const {currentBulk} = this.state;
+        const {selectedItemId, bulkSize, items} = this.props;
         const {bulksNumber, bulksArr} = this;
+        const bulkStart = bulkSize * (currentBulk - 1);
+        const bulkEnd = bulkSize * (currentBulk);
+        const itemsToDisplay = this.calculateItemsToDisplay(items, bulkStart, bulkEnd);
         return (
             <div className="items-table-component">
                 <div className="items-table-component_items">

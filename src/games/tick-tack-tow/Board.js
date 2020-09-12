@@ -9,7 +9,8 @@ export default function Board({
         <div className="ticktack-board">
             {boardValues.map((boardValue, index) => {
                 return (
-                    <div className={boardValue.winnerStrike ?
+                    <div key={index}
+                         className={boardValue.winnerStrike ?
                         "ticktack-board-cell ticktack-board-cell-winner" :
                         "ticktack-board-cell ticktack-board-cell-regular"}
                          onClick={() => boardCellClicked(index)}>

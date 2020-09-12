@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "./drop-down.styles.scss";
-import ReactDOM from "react-dom";
 import onClickOutsideHOC from "react-onclickoutside";
 
 class DropDown extends Component{

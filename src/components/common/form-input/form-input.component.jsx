@@ -2,13 +2,11 @@ import React, {Component} from "react";
 import "./form-input.styles.scss";
 import viewIcon from "../../../assets/view.png";
 import hideIcon from "../../../assets/hide.png";
-import {validateEmail, validatePassword} from "../../../util/validators";
 import {stringNotEmpty} from "../../../util/objectUtils";
+import {validateValueWithRegex} from "../../../util/utils";
+import {INPUT_TYPES_DATA, _INPUT_TYPES} from "../../../util/data/input-types";
 
-export const INPUT_TYPES = {
-    PASSWORD: "password",
-    EMAIL: "email"
-};
+export const INPUT_TYPES = _INPUT_TYPES;
 
 export default class FormInput extends Component
 {
@@ -50,16 +48,10 @@ export default class FormInput extends Component
             internalValidationMessage = `${label} is required`;
         }
         else {
-            switch (type) {
-                case INPUT_TYPES.PASSWORD: {
-                    const validationResult = validatePassword(value);
-                    internalValidationMessage = !validationResult && "password should contain 6-8 ABC/abc characters";
-                } break;
-                case INPUT_TYPES.EMAIL: {
-                    const validationResult = validateEmail(value);
-                    internalValidationMessage = !validationResult && "invalid email";
-                } break;
-                default: break;
+            const inputType = INPUT_TYPES_DATA[type];
+            if (inputType) {
+                const validationResult = validateValueWithRegex(inputType.validatorExpression, value);
+                internalValidationMessage = !validationResult && inputType.validationMessage;
             }
         }
         this.setState({internalValidationMessage: internalValidationMessage});

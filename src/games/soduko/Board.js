@@ -15,6 +15,7 @@ export default function Board({boardItems, clickCell})
                 style = item.isExists ? style + "soduko-board-cell-exists " : style;
                 return (
                     <div
+                        key={index}
                         className={style} onClick={() => clickCell(index)}>
                         <span>
                             {item.number === -1 ?

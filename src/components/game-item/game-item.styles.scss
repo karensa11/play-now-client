@@ -1,35 +1,42 @@
 .game-item-component {
-  display: flex;
-  justify-content: center;
-  height: 200px;
-  width: 180px;
-  background-color: #464646;
-  border: 1px solid #464646;
-  border-radius: 7px;
 
-  .game-item-content {
-    display: flex;
-    flex-direction: column;
-    border-radius: inherit;
-
-    img {
-      height: 150px;
-      width: 100%;
-      border-top-left-radius: 7px;
-      border-top-right-radius: 7px;
-    }
-
-    .name {
-      color: white;
-      display: flex;
-      justify-content: center;
-      padding-top: 13px;
-      font-weight: bold;
-      font-size: 18px;
-    }
+  a {
+    text-decoration: none;
+    font-family: inherit;
   }
+  .game-items {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    width: 180px;
+    background-color: #464646;
+    border: 1px solid #464646;
+    border-radius: 7px;
 
-  &:hover {
-    border: 1px solid #bbb;
+    .game-item-content {
+      display: flex;
+      flex-direction: column;
+      border-radius: inherit;
+
+      img {
+        height: 150px;
+        width: 100%;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+      }
+
+      .name {
+        color: white;
+        display: flex;
+        justify-content: center;
+        padding-top: 13px;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+
+    &:hover {
+      border: 1px solid #bbb;
+    }
   }
 }

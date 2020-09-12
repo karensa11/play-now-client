@@ -3,7 +3,6 @@ import "./account-details.styles.scss";
 import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
 import {currentUserSelector} from "../../../redux/user/user-selector";
-import FormInput from "../../common/form-input/form-input.component";
 import {setTitle} from "../../../util/utils";
 import CustomButton from "../../common/custom-button/custom-button.component";
 import {updatePassword, updateUserDetails} from "../../../util/firebase/firebaseAuthenticationAndUsers";
@@ -13,12 +12,14 @@ import ItemsTable from "../../common/items-table/items-table.component";
 import avatars from "../../../data/avatars";
 import BasicAccountDetails from "../basic-account-details/basic-acount-details.component";
 import UserAvatar from "../user-avatar/user-avatar.component";
+import {reviewsByUserSelector} from "../../../redux/categories-and-games/categories-and-games-selector";
+import {store} from "../../../redux/store";
+import GameReviews from "../../game-reviews/game-reviews.component";
 
 class AccountDetails extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            displayName: this.props.currentUser.displayName,
             password: "",
             avatarId: this.props.currentUser.avatarId,
             resetPassword: false,
@@ -44,17 +45,15 @@ class AccountDetails extends Component{
     };
     handleSubmit = async (event) => {
         event.preventDefault();
-        const {displayName, password, avatarId, invalidValues} = this.state;
+        const {password, avatarId, invalidValues} = this.state;
         const {currentUser} = this.props;
         if(objectNotEmpty(invalidValues)){
             return;
         }
-        if(displayName !== currentUser.displayName || avatarId !== currentUser.avatarId)
-        {
+        if(avatarId !== currentUser.avatarId) {
             try {
                 await updateUserDetails({
                     ...this.props.currentUser,
-                    displayName: displayName,
                     avatarId: avatarId
                 });
                 alert("updated details with success");
@@ -67,7 +66,6 @@ class AccountDetails extends Component{
                 await updatePassword(password);
                 alert("your password was successfully updated");
                 this.setState({password: "", resetPassword: true});
-                alert("updated password with success");
             } catch (err) {
                 alert("failed to update");
             }
@@ -75,24 +73,17 @@ class AccountDetails extends Component{
     };
 
     render() {
-        const {displayName, resetPassword, avatarId} = this.state;
-        const {internal} = this.props.currentUser;
+        const {resetPassword, avatarId} = this.state;
+        const {currentUser} = this.props;
+        const {internal, id} = currentUser;
+        const reviewsData = reviewsByUserSelector(id)(store.getState());
         return (
             <div className="account-details-component">
                 <form>
                     <div className="container">
                         <div className="content">
-                            <BasicAccountDetails />
+                            <BasicAccountDetails userToDisplay={currentUser} />
                             <div className="const-details">
-                                <div className="side-section">
-                                    <FormInput
-                                        name="displayName"
-                                        label="Display Name"
-                                        required
-                                        handleChange={this.handleChange}
-                                        value={displayName}
-                                    />
-                                </div>
                                 {internal &&
                                     <div className="side-section">
                                         <PasswordConfirm
@@ -103,6 +94,7 @@ class AccountDetails extends Component{
                                     </div>
                                 }
                             </div>
+                            <hr />
                             <div className="image-border">
                                 <div className="title">
                                     Select Avatar
@@ -116,11 +108,13 @@ class AccountDetails extends Component{
                                     )}
                                 />
                             </div>
+                            <hr />
                             <div className="buttons">
-                                <CustomButton onClick={this.handleSubmit}>
-                                    Save
-                                </CustomButton>
+                                <CustomButton onClick={this.handleSubmit}>Save</CustomButton>
                             </div>
+                            {reviewsData &&
+                                <GameReviews reviewsData={reviewsData} isOwnUser />
+                            }
                         </div>
                     </div>
                 </form>

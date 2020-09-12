@@ -1,7 +1,8 @@
 import types from "./user-types";
 
 const INITIAL_STATE = {
-    currentUser: null
+    currentUser: null,
+    allUsers: []
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -10,7 +11,17 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 currentUser: action.payload
-            }
+            };
+        case types.CREATING_USER:
+            return {
+                ...state,
+                isCreatingUser: action.payload
+            };
+        case types.SET_ALL_USERS:
+            return {
+                ...state,
+                allUsers: action.payload
+            };
         default:
             return state;
     }

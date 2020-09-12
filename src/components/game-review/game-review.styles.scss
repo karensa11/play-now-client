@@ -1,0 +1,78 @@
+.review-component {
+    background-color: #222;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+
+    .review-user-row {
+        display: flex;
+        flex-direction: row;
+    }
+    .review-username {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        font-family: inherit;
+        color: inherit;
+
+        &:hover {
+            color: red;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    .likes {
+        width: 6%;
+        height: inherit;
+        display: flex;
+        justify-content: center;
+        margin-left: 30px;
+        margin-top: -5px;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .review-details {
+        display: flex;
+        flex-direction: row;
+
+        &-game-name {
+            display: flex;
+            flex-direction: row;
+        }
+        &-review-date {
+            color: #999;
+            font-style: italic;
+        }
+        &-in {
+            margin: 0 10px;
+        }
+        &-game-name-title {
+            color: red;
+            text-decoration: none;
+            font-style: inherit;
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .user-image {
+        margin-right: 20px;
+
+        img {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #999;
+            border-radius: 10px;
+            box-shadow: 5px 5px 30px black;
+        }
+    }
+}

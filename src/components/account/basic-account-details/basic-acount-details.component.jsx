@@ -1,13 +1,10 @@
 import React from "react";
 import "./basic-acount-details.styles.scss";
-import {connect} from "react-redux";
-import {createStructuredSelector} from "reselect";
-import {currentUserSelector} from "../../../redux/user/user-selector";
 import dateFormat from "dateformat";
 import avatars from "../../../data/avatars";
 
-function BasicAccountDetails ({currentUser}) {
-    const {email, createAt, avatarId} = currentUser;
+export default function BasicAccountDetails ({userToDisplay}) {
+    const {email, createAt, avatarId} = userToDisplay;
     const userCreationDate = dateFormat(new Date(createAt.seconds * 1000), "dd-mm-yyyy hh:MM:ss");
     const selectedAvatar = avatars.filter(item => item.id === avatarId)[0];
     return (
@@ -27,9 +24,3 @@ function BasicAccountDetails ({currentUser}) {
         </div>
     )
 }
-
-const mapStateToProps = createStructuredSelector({
-    currentUser: currentUserSelector
-});
-
-export default connect(mapStateToProps)(BasicAccountDetails);

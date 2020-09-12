@@ -1,5 +1,5 @@
 import {auth, firestore} from "./firebase";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import {logError} from "../logger";
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -14,16 +14,23 @@ export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider);
 export async function createUserProfileDocument(user) {
     const ref = firestore.doc(`users/${user.uid}`);
     const snapshot = await ref.get();
-    if(!snapshot.exists) {
-        const {displayName, email, isInternal} = user;
+    const {displayName, isInternal} = user;
+    if(!snapshot.exists && (displayName || isInternal)) {
+        let {username, email, uid} = user;
+        const avatarId = 0;
         const internal = !!isInternal;
+        if (!username) {
+            username = email.substr(0, email.indexOf("@"));
+        }
         const createAt = new Date();
         try {
             await ref.set({
-                displayName,
+                username,
                 email,
                 createAt,
-                internal
+                internal,
+                avatarId,
+                id: uid
             })
         } catch (err)  {
             logError("createUserProfileDocument", err);
@@ -42,6 +49,19 @@ export async function checkUserExistsByMail(email) {
         return snapshot.size === 1;
     } catch (err) {
         logError("checkUserExistsByMail", err);
+        return true;
+    }
+}
+
+export async function checkUserExistsByUsername(username) {
+    try {
+        const snapshot = await firestore
+            .collection("users")
+            .where("username", "==", username)
+            .get();
+        return snapshot.size === 1;
+    } catch (err) {
+        logError("checkUserExistsByUsername", err);
         return true;
     }
 }

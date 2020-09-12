@@ -18,16 +18,8 @@
       }
 
       .image-border {
-        margin-top: 20px;
-        border-top: 1px solid #555;
-        border-bottom: 1px solid #555;
         font-size: 20px;
-        padding-bottom: 30px;
         color: #888;
-
-        .title {
-          padding-top: 20px;
-        }
       }
     }
   }
@@ -35,6 +27,5 @@
   .buttons {
     display: flex;
     justify-content: center;
-    padding-top: 30px;
   }
 }

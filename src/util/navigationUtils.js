@@ -15,7 +15,7 @@ export function goToCategory(history, categoryData) {
 }
 
 export function goToGame(history, gameData) {
-    history.push(`/game/${gameData.id}`);
+    navigateToAndRefresh(history, `/game/${gameData.id}`);
 }
 
 export function searchWithString(history, searchString) {
@@ -37,4 +37,12 @@ export function extractQueryParam(location, param) {
         });
     }
     return result;
+}
+
+export function gameLink(gameData) {
+    return `/game/${gameData.id}/reload`;
+}
+
+export function userLink(userData) {
+    return `/user/${userData.username}`;
 }
