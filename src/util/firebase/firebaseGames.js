@@ -24,4 +24,14 @@ export async function addReview(reviewData) {
         logError("updateGameCount", err);
         throw err;
     }
+    try {
+        await firestore
+            .doc(`games/${reviewData.gameId}`)
+            .update({
+                reviews: firebase.firestore.FieldValue.increment(1),
+                likes: reviewData.liked ? firebase.firestore.FieldValue.increment(1) : null});
+    } catch (err) {
+        logError("updateGameCount", err);
+        throw err;
+    }
 }

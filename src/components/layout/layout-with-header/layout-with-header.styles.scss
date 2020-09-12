@@ -1,12 +1,10 @@
+@import "../../../util/_variables";
+
 .layout-with-header-component {
+
   .main-section {
-    min-height: 700px;
-    display: flex;
-    justify-content: center;
+    @include main-section;
+
     margin-top: 30px;
-    width: 100%;
-    background-color: #151515;
-    border-radius: 10px;
-    color: white;
   }
 }

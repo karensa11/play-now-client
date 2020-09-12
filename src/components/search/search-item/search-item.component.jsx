@@ -4,8 +4,9 @@ import {categoryByIdSelector} from "../../../redux/categories-and-games/categori
 import {store} from "../../../redux/store";
 import {withRouter} from "react-router-dom";
 import {goToCategory, goToGame} from "../../../util/navigationUtils";
+import {calculateLikesRate} from "../../../util/utils";
 
-function SearchItem({history, gameData}) {
+function SearchItem({history, gameData, index}) {
     const navigateToGame = () => {
         goToGame(history, gameData);
     };
@@ -13,8 +14,9 @@ function SearchItem({history, gameData}) {
         goToCategory(history, {id: gameData.categoryCode});
     };
     const categoryData = gameData && categoryByIdSelector(gameData.categoryCode)(store.getState());
+    const likesRate = calculateLikesRate(gameData);
     return (
-        <div className="search-item-component">
+        <div className={`search-item-component ${index === 0 ? "no-border" : ""}`}>
             <div className="details">
                 <img src={gameData.imageUrl} alt="the game" onClick={navigateToGame} />
                 <div className="content">
@@ -34,7 +36,7 @@ function SearchItem({history, gameData}) {
             </div>
             <div className="count">{gameData.usageCount}</div>
             <div className="count">{gameData.creationDate}</div>
-            <div className="likes">&nbsp;</div>
+            <div className="likes">{likesRate}%</div>
         </div>
     )
 }

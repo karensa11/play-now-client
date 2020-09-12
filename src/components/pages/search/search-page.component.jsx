@@ -15,21 +15,24 @@ function SearchPage({searchItems, location}) {
                 <div className="results-count">
                     We found {searchItems.length} results for "{searchText}"
                 </div>
-                <div className="table-header">
-                    <div className="details">&nbsp;</div>
-                    <div className="count">PLAY COUNT</div>
-                    <div className="count">DATE ADDED</div>
-                    <div className="likes">
-                        <img src={like} alt="likes amount" />
+                <div className="table">
+                    <div className="table-header">
+                        <div className="details">&nbsp;</div>
+                        <div className="count">PLAY COUNT</div>
+                        <div className="count">DATE ADDED</div>
+                        <div className="likes">
+                            <img src={like} alt="likes amount" />
+                        </div>
                     </div>
+                    {searchItems.map((searchItem, index) => {
+                        return (
+                            <SearchItem key={searchItem.id}
+                                        gameData={searchItem}
+                                        index={index}
+                            />
+                        )
+                    })}
                 </div>
-                {searchItems.map((searchItem) => {
-                    return (
-                        <SearchItem key={searchItem.id}
-                                    gameData={searchItem}
-                        />
-                    )
-                })}
             </div>
         </LayoutWithHeader>
     )

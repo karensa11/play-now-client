@@ -1,4 +1,7 @@
+@import "../../../util/_variables";
+
 .layout-with-header-categories-footer-component {
+
   .categories-header {
     display: flex;
     justify-content: space-between;
@@ -6,12 +9,6 @@
   }
 
   .main-section {
-    min-height: 700px;
-    display: flex;
-    justify-content: center;
-    margin: 0 100px;
-    background-color: #151515;
-    border-radius: 10px;
-    color: white;
+    @include main-section;
   }
 }

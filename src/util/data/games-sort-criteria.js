@@ -1,3 +1,5 @@
+import {calculateLikesRate} from "../utils";
+
 export default [
     {
         code: "latest",
@@ -12,6 +14,10 @@ export default [
     {
         code: "rating",
         displayName: "Rating",
-        sortFunc: (item1, item2) => item2.votes < item1.votes ? -1 : 1
+        sortFunc: (item1, item2) => {
+            const likesRate1 = calculateLikesRate(item1);
+            const likesRate2 = calculateLikesRate(item2);
+            return likesRate1 < likesRate2 ? -1 : 1
+        }
     }
 ]

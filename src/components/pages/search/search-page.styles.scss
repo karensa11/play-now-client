@@ -5,16 +5,19 @@
   font-size: 30px;
 
   .results-count {
-    padding-bottom: 20px;
+    padding: 20px 0;
     font-weight: bold;
   }
 
+  .table {
+    box-shadow: 5px 5px 20px black;
+  }
+
   .table-header {
-    border: 1px solid #222;
     height: 80px;
     display: flex;
     justify-content: left;
-    background-color: #111;
+    background-color: black;
     text-transform: uppercase;
     font-weight: bolder;
     font-size: 25px;
@@ -22,13 +25,13 @@
 
     .details {
       width: 60%;
-      border-right: 1px solid #222;
+      border-right: 1px solid #333;
       height: inherit;
     }
     .count {
       width: 17%;
       height: inherit;
-      border-right: 1px solid #222;
+      border-right: 1px solid #333;
       text-align: center;
       padding-top: 20px;
     }
