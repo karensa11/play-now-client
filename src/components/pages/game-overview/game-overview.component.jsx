@@ -57,7 +57,6 @@ class GameOverview extends PureComponent{
                             <hr />
                             <div className="details">Release Date:&nbsp;&nbsp;{gameData.creationDate}</div>
                             <div className="details">{gameData.usageCount} Plays</div>
-                            <hr />
                             {reviewsData &&
                                 <GameReviews reviewsData={reviewsData} gameData={gameData} userData={currentUser}
                                              isOwnGame showGameReviewOption />

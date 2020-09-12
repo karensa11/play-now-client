@@ -48,13 +48,13 @@ export default class GameReviews extends Component
     };
     render()
     {
-        const {reviewsData, isOwnUser, isOwnGame, showGameReviewOption} = this.props;
+        const {reviewsData, isOwnUser, isOwnGame, showGameReviewOption, userData} = this.props;
         const {liked, reviewValidationMessage} = this.state;
         return (
             <div className="game-reviews">
                 <hr/>
                 <div className="reviews-title"><span>{isOwnUser ? "MY " : ""}</span>GAME REVIEWS</div>
-                {showGameReviewOption &&
+                {showGameReviewOption && userData &&
                     <div className="review-game">
                         <FormInput validationMessage={reviewValidationMessage}
                                    handleChange={this.reviewTextChanged} name="review" />
@@ -75,7 +75,7 @@ export default class GameReviews extends Component
                         <div className="review-submit">
                             <CustomButton onClick={this.submitReview}
                                 style={{backgroundColor: "#304", border: "1px solid #609"}}>
-                                Submit
+                                Submit Review
                             </CustomButton>
                         </div>
                     </div>
