@@ -32,12 +32,14 @@ class SearchPage extends Component {
 
     paginatePrevious = (event) => {
         event.preventDefault();
-        this.setCurrentBulk(this.state.currentBulk - 1);
+        const {currentBulk} = this.state;
+        this.setCurrentBulk(currentBulk - 1);
     };
 
     paginateNext = (event) => {
         event.preventDefault();
-        this.setCurrentBulk(this.state.currentBulk + 1);
+        const {currentBulk} = this.state;
+        this.setCurrentBulk(currentBulk + 1);
     };
 
     setCurrentBulk = (currentBulk) => {
@@ -46,7 +48,7 @@ class SearchPage extends Component {
     setCurrentBulkBtn = (event) => {
         event.preventDefault();
         const {value} = event.target;
-        this.setCurrentBulk(value);
+        this.setCurrentBulk(+value);
     };
 
     calculateItemsToDisplay = memoize((searchItems, bulkStart, bulkEnd) => {
