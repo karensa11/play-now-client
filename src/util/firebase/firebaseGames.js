@@ -19,7 +19,7 @@ export async function addReview(reviewData) {
     try {
         await firestore
             .doc(`reviews/${id}`)
-            .set(reviewData);
+            .set({...reviewData, id: id});
     } catch (err) {
         logError("updateGameCount", err);
         throw err;

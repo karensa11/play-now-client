@@ -19,5 +19,5 @@ export function validateValueWithRegex(regex, value) {
 }
 
 export function calculateLikesRate(gameData) {
-    return gameData.reviews === 0 ? 100 : Math.round(gameData.likes / gameData.reviews * 100);
+    return gameData.reviews === 0 ? 0 : Math.round(gameData.likes / gameData.reviews * 100);
 }

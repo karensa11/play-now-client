@@ -1,4 +1,7 @@
 .game-item-component {
+  box-shadow: 5px 5px 20px black;
+  margin-left: 25px;
+  margin-top: 20px;
 
   a {
     text-decoration: none;
@@ -7,8 +10,8 @@
   .game-items {
     display: flex;
     justify-content: center;
-    height: 200px;
-    width: 180px;
+    height: 240px;
+    width: 220px;
     background-color: #464646;
     border: 1px solid #464646;
     border-radius: 7px;
@@ -19,8 +22,8 @@
       border-radius: inherit;
 
       img {
-        height: 150px;
-        width: 100%;
+        height: 190px;
+        width: 220px;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
       }

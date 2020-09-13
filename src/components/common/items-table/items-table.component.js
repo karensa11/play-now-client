@@ -7,8 +7,7 @@ export default class ItemsTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            currentBulk: 1,
-            bulksNumber: 0
+            currentBulk: 1
         };
         const {items, bulkSize} = this.props;
         this.bulksNumber = items.length === bulkSize ?

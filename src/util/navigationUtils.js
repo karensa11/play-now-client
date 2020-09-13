@@ -20,6 +20,8 @@ export function goToGame(history, gameData) {
 
 export function searchWithString(history, searchString) {
     history.push(`/search?searchText=${searchString}`);
+    const historyBack = createHistory();
+    historyBack.go(0);
 }
 
 export function extractQueryParam(location, param) {

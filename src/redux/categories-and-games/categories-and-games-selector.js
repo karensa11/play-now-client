@@ -22,7 +22,11 @@ export const allReviewsSelector = createSelector(
 
 export const gamesByCategorySelector = memoize( categoryCode => createSelector(
     [allGamesSelector],
-    allGames => allGames.filter(game => game.categoryCode === categoryCode)
+    allGames => allGames.filter(game => {
+        console.log("game {0}", game);
+        console.log("game.categoryCode === categoryCode {0}", game.categoryCode === categoryCode);
+        return game.categoryCode === categoryCode
+    })
 ));
 
 export const gamesByCategoryAndSortCriteriaSelector = memoize( (categoryCode, gamesSortCode) => createSelector(

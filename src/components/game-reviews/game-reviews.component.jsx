@@ -38,7 +38,7 @@ export default class GameReviews extends Component
         } catch (err) {
             alert("add review failed");
         }
-        this.setState({review: "", like: true});
+        this.setState({review: "", liked: true});
     };
     setLike = () => {
         this.setState({liked: true});
