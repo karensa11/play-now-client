@@ -1,0 +1,28 @@
+.pagination-component {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  button {
+    margin: 0 5px;
+    height: 40px;
+    background-color: #333;
+    color: white;
+    font-family: inherit;
+    text-transform: lowercase;
+    font-size: 20px;
+    line-height: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 0 20px;
+    font-weight: 400;
+
+    &.selected {
+      background-color: #666;
+    }
+
+    &:hover {
+      background-color: #666;
+    }
+  }
+}

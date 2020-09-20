@@ -11,7 +11,7 @@ import AccountManagement from "./pages/account/account.component";
 import GameOverview from "./pages/game-overview/game-overview.component";
 import Category from "./pages/category/category.component";
 import {fetchGames, fetchReviews, fetchUsers} from "../util/thunk";
-import SearchPage from "./pages/search/search-page.component";
+import SearchPage from "./pages/search-results/search-results.component";
 import {createStructuredSelector} from "reselect";
 import {currentUserSelector} from "../redux/user/user-selector";
 import UserOverview from "./pages/user-overview/user-overview.component";

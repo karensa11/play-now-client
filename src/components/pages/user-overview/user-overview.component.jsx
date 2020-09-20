@@ -5,7 +5,7 @@ import LayoutWithHeaderCategoriesFooter
     from "../../layout/layout-with-header-categories-footer/layout-with-header-categories-footer.component";
 import {createStructuredSelector} from "reselect";
 import {allUsersSelector} from "../../../redux/user/user-selector";
-import BasicAccountDetails from "../../account/basic-account-details/basic-acount-details.component";
+import BasicAccountDetails from "../../basic-account-details/basic-acount-details.component";
 import {reviewsByUserSelector} from "../../../redux/categories-and-games/categories-and-games-selector";
 import {store} from "../../../redux/store";
 import GameReviews from "../../game-reviews/game-reviews.component";

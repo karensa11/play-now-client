@@ -1,8 +1,8 @@
 import React from "react";
 import "./category.styles.scss";
 import {Switch, Route} from "react-router-dom";
-import CategoryOverview from "../../category/category-overview/category-overview.component";
-import AllCategories from "../../category/all-categories/all-categories.component";
+import CategoryOverview from "../category-overview/category-overview.component";
+import AllCategories from "../all-categories/all-categories.component";
 import LayoutWithHeaderCategoriesFooter
     from "../../layout/layout-with-header-categories-footer/layout-with-header-categories-footer.component";
 

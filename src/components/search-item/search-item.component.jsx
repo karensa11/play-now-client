@@ -1,10 +1,10 @@
 import React from "react";
 import "./search-item.styles.scss";
-import {categoryByIdSelector} from "../../../redux/categories-and-games/categories-and-games-selector";
-import {store} from "../../../redux/store";
+import {categoryByIdSelector} from "../../redux/categories-and-games/categories-and-games-selector";
+import {store} from "../../redux/store";
 import {withRouter} from "react-router-dom";
-import {goToCategory, goToGame} from "../../../util/navigationUtils";
-import {calculateLikesRate} from "../../../util/utils";
+import {goToCategory, goToGame} from "../../util/navigationUtils";
+import {calculateLikesRate} from "../../util/utils";
 
 function SearchItem({history, gameData, index}) {
     const navigateToGame = () => {

@@ -1,12 +1,12 @@
 import React from "react";
 import "./account.styles.scss";
-import Login from "../../account/login/login.component.jsx";
+import Login from "../login/login.component.jsx";
 import {Switch, Route, Redirect} from "react-router-dom";
 import {currentUserSelector} from "../../../redux/user/user-selector";
 import {createStructuredSelector} from "reselect";
 import {connect} from "react-redux";
-import Register from "../../account/register/register.component";
-import AccountDetails from "../../account/account-details/account-details.component";
+import Register from "../register/register.component";
+import AccountDetails from "../account-details/account-details.component";
 import LayoutWithHeaderCategoriesFooter
     from "../../layout/layout-with-header-categories-footer/layout-with-header-categories-footer.component";
 
