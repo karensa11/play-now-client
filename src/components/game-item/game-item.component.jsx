@@ -10,7 +10,11 @@ function GameItem({gameData}) {
             <a title={displayName} href={gameLinkUrl}>
                 <div className="game-items">
                     <div className="game-item-content">
-                        <img src={imageUrl} alt={displayName} />
+                        <div className="img">
+                            <div className="container"
+                                 style={{backgroundImage: `url(${imageUrl})`}}
+                            />
+                        </div>
                         <div className="name">{displayName}</div>
                     </div>
                 </div>

@@ -1,0 +1,10 @@
+.link-component {
+  font-family: inherit;
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+}

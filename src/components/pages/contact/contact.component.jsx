@@ -4,6 +4,7 @@ import CustomButton from "../../common/custom-button/custom-button.component";
 import {setTitle} from "../../../util/utils";
 import FormInput from "../../common/form-input/form-input.component";
 import TextAreaInput from "../../common/text-area/text-area.component";
+import {sendContactEmail} from "../../../util/beServerUtils";
 
 export default class Contact extends Component
 {
@@ -17,26 +18,18 @@ export default class Contact extends Component
     componentDidMount() {
         setTitle("Contact");
     }
-    setField = (event) => {
-        const {name, value} = event.target;
+    setField = (name, value) => {
         this.setState({[name]: value});
     };
-    sendEmail = (event) => {
+    sendEmail = async (event) => {
         event.preventDefault();
-        // TODO - not working //
-        const options = {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                to: this.state.from_email,
-                message: this.state.html_message
-            })
-        };
-        const url = "http://localhost:5600/sendContactEmail";
-        fetch(url, options);
+        const {from_email, html_message} = this.state;
+        try {
+            await sendContactEmail(from_email, html_message);
+            alert("Your message received success");
+        } catch (err) {
+            alert("Failed to save message");
+        }
     };
     render() {
         return (

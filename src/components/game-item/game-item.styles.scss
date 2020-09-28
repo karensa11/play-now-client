@@ -10,7 +10,7 @@
   .game-items {
     display: flex;
     justify-content: center;
-    height: 240px;
+    height: 270px;
     width: 220px;
     background-color: #464646;
     border: 1px solid #464646;
@@ -21,11 +21,28 @@
       flex-direction: column;
       border-radius: inherit;
 
-      img {
-        height: 190px;
+      .img {
+        height: 220px;
         width: 220px;
-        border-top-left-radius: 7px;
-        border-top-right-radius: 7px;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        .container {
+          height: 100%;
+          width: 100%;
+          background-repeat: no-repeat;
+          border-top-left-radius: 7px;
+          border-top-right-radius: 7px;
+          background-size: cover;
+
+          &:hover {
+            transform: scale(1.1);
+            transition: transform 4s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+          }
+        }
       }
 
       .name {

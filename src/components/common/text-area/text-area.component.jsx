@@ -2,6 +2,11 @@ import React from "react";
 import "./text-area.styles.scss";
 
 export default function TextAreaInput({handleChange, label, required, ...otherProps}) {
+
+    const onChange = (event) => {
+        const {name, value} = event.target;
+        handleChange(name, value);
+    };
     return (
         <div className="form-area-group-component">
             <div className="form-area-group-component_title">
@@ -14,7 +19,7 @@ export default function TextAreaInput({handleChange, label, required, ...otherPr
             </div>
             <textarea   className="form-area-group-component_form-area"
                         {...otherProps}
-                        onChange={handleChange} />
+                        onChange={onChange} />
         </div>
     )
 }
