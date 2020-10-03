@@ -5,23 +5,26 @@ export function navigateToAndRefresh(history, url) {
     const historyBack = createHistory();
     historyBack.go(0);
 }
-
-export function goToHomePage(history) {
+export function navigateToHomePage(history) {
     history.push("/");
 }
-
-export function goToCategory(history, categoryData) {
+export function navigateToCategory(history, categoryData) {
     history.push(`/category/${categoryData.id}`);
 }
-
-export function goToGame(history, gameData) {
-    navigateToAndRefresh(history, `/game/${gameData.id}`);
+export function navigateToGame(history, gameData) {
+    history.push(`/game/${gameData.id}`);
 }
-
-export function searchWithString(history, searchString) {
+export function navigateToSearchWithString(history, searchString) {
     history.push(`/search?searchText=${searchString}`);
-    const historyBack = createHistory();
-    historyBack.go(0);
+}
+export function navigateToAccount(history) {
+    history.push("/account");
+}
+export function navigateToRegister(history) {
+    history.push("/account/register");
+}
+export function navigateToAllCategories(history) {
+    history.push("/category/all");
 }
 
 export function extractQueryParam(location, param) {

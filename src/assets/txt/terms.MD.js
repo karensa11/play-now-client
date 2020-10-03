@@ -1,4 +1,4 @@
-import {appendLine, appendText} from "../../util/utils";
+import {appendLine} from "../../util/utils";
 
 let text = "";
 text = appendLine(text,"# Terms and Agreement");

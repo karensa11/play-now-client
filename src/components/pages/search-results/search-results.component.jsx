@@ -6,7 +6,6 @@ import {extractQueryParam} from "../../../util/navigationUtils";
 import LayoutWithHeader from "../../layout/layout-with-header/layout-with-header.component";
 import SearchItem from "../../search-item/search-item.component";
 import like from "../../../assets/like2.png";
-import memoize from "memoize-one";
 import {calculateItemsToDisplay, Pagination} from "../../common/pagination/pagination.component";
 
 const BULK_SIZE = 10;

@@ -5,16 +5,17 @@ import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
 import {currentUserSelector} from "../../../redux/user/user-selector";
 import {auth} from "../../../util/firebase/firebase";
+import {navigateToAccount, navigateToRegister} from "../../../util/navigationUtils";
 
 function AccountSection({history, currentUser}) {
     const signOut = async () => {
         await auth.signOut();
     };
-    const navigateToAccount = () => {
-        history.push("/account");
+    const goToAccount = () => {
+        navigateToAccount(history);
     };
-    const navigateToRegister = () => {
-        history.push("/account/register");
+    const goToRegister = () => {
+        navigateToRegister(history);
     };
     return (
         <div className="account-section-component">
@@ -22,7 +23,7 @@ function AccountSection({history, currentUser}) {
                 <div>
                     <div className="button-section">
                         <button  className="register-button"
-                                 onClick={navigateToAccount}>
+                                 onClick={goToAccount}>
                             Account
                         </button>
                     </div>
@@ -36,13 +37,13 @@ function AccountSection({history, currentUser}) {
                 <div>
                     <div className="button-section">
                         <button  className="register-button"
-                                 onClick={navigateToRegister}>
+                                 onClick={goToRegister}>
                             Register
                         </button>
                     </div>
                     <div className="button-section">
                         <button className="login-button"
-                                onClick={navigateToAccount}>
+                                onClick={goToAccount}>
                             Login
                         </button>
                     </div>

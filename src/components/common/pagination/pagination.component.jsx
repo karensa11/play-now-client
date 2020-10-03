@@ -14,14 +14,26 @@ export const calculateItemsToDisplay = memoize((items, bulkStart, bulkEnd) => {
     return items.filter((value, index) => (index >= bulkStart && index < bulkEnd))
 });
 
+const calculateData = memoize((items, bulkSize) => {
+    const result = {};
+    if (items && items.length > 0) {
+        result.bulksNumber = items.length === bulkSize ?
+            1 : Math.floor(items.length / bulkSize) + 1;
+        result.bulksArr = createIndexArr(1, result.bulksNumber + 1);
+    }
+    return result;
+});
+
 export class Pagination extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            currentBulk: -1
+            currentBulk: -1,
+            currentData: null
         };
     }
+
     componentDidMount() {
         this.initialize();
     }
@@ -29,14 +41,13 @@ export class Pagination extends Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.initialize();
     }
+
     initialize = () => {
         const {items, bulkSize} = this.props;
-        const {currentBulk} = this.state;
-        if (items && items.length > 0 && currentBulk < 0) {
-            this.bulksNumber = items.length === bulkSize ?
-                1 : Math.floor(items.length / bulkSize) + 1;
-            this.bulksArr = createIndexArr(1, this.bulksNumber + 1);
-            this.setState({initialized: true});
+        const paginationData = calculateData(items, bulkSize);
+        const {currentData} = this.state;
+        if (paginationData !== currentData) {
+            this.setState({currentData: paginationData});
             this.setCurrentBulk(1);
         }
     };
@@ -71,9 +82,10 @@ export class Pagination extends Component {
         const {value} = event.target;
         this.setCurrentBulk(+value);
     };
+
     render() {
-        const {bulksArr, bulksNumber} = this;
-        const {currentBulk} = this.state;
+        const {currentBulk, currentData} = this.state;
+        const {bulksArr, bulksNumber} = currentData || {bulksArr: []};
         return (
             <div className="pagination-component">
                 {currentBulk > 0 && bulksNumber > 1 &&

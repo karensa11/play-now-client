@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./search-game.styles.scss";
 import search from "../../../assets/search.png";
 import {withRouter} from "react-router-dom";
-import {searchWithString} from "../../../util/navigationUtils";
+import {navigateToSearchWithString} from "../../../util/navigationUtils";
 
 class SearchGame extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class SearchGame extends Component {
     search = () => {
         const {searchString} = this.state;
         const {history} = this.props;
-        searchWithString(history, searchString);
+        navigateToSearchWithString(history, searchString);
     };
     render () {
         return (

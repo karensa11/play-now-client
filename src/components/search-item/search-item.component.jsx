@@ -3,24 +3,24 @@ import "./search-item.styles.scss";
 import {categoryByIdSelector} from "../../redux/categories-and-games/categories-and-games-selector";
 import {store} from "../../redux/store";
 import {withRouter} from "react-router-dom";
-import {goToCategory, goToGame} from "../../util/navigationUtils";
+import {navigateToCategory, navigateToGame} from "../../util/navigationUtils";
 import {calculateLikesRate} from "../../util/utils";
 
 function SearchItem({history, gameData, index}) {
-    const navigateToGame = () => {
-        goToGame(history, gameData);
+    const goToGame = () => {
+        navigateToGame(history, gameData);
     };
-    const navigateToCategory = () => {
-        goToCategory(history, {id: gameData.categoryCode});
+    const goToCategory = () => {
+        navigateToCategory(history, {id: gameData.categoryCode});
     };
     const categoryData = gameData && categoryByIdSelector(gameData.categoryCode)(store.getState());
     const likesRate = calculateLikesRate(gameData);
     return (
         <div className={`search-item-component ${index === 0 ? "no-border" : ""}`}>
             <div className="details">
-                <img src={gameData.imageUrl} alt="the game" onClick={navigateToGame} />
+                <img src={gameData.imageUrl} alt="the game" onClick={goToGame} />
                 <div className="content">
-                    <div className="title" onClick={navigateToGame}>
+                    <div className="title" onClick={goToGame}>
                         {gameData.displayName}
                     </div>
                     <div className="description">
@@ -29,7 +29,7 @@ function SearchItem({history, gameData, index}) {
                     <div className="category-title">
                         Category:
                     </div>
-                    <div className="category" onClick={navigateToCategory}>
+                    <div className="category" onClick={goToCategory}>
                         {categoryData.displayName}
                     </div>
                 </div>

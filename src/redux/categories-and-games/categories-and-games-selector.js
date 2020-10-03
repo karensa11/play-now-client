@@ -27,8 +27,10 @@ export const gamesByCategorySelector = memoize( categoryCode => createSelector(
 
 export const gamesByCategoryAndSortCriteriaSelector = memoize( (categoryCode, gamesSortCode) => createSelector(
     [allGamesSelector],
-    allGames => allGames.filter(game => game.categoryCode === categoryCode)
-        .sort(criteria.filter(item => item.code === gamesSortCode)[0].sortFunc)
+    allGames => {
+        return allGames.filter(game => game.categoryCode === categoryCode)
+            .sort(criteria.filter(item => item.code === gamesSortCode)[0].sortFunc)
+    }
 ));
 
 export const gamesBySearchTextSelector = memoize(searchText => createSelector(

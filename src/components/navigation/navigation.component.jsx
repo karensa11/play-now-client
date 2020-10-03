@@ -1,22 +1,22 @@
 import React from "react";
 import "./navigation.styles.scss";
 import {withRouter} from "react-router-dom";
-import {goToCategory, goToHomePage} from "../../util/navigationUtils";
+import {navigateToCategory, navigateToHomePage} from "../../util/navigationUtils";
 
 function Navigation({history, categoryData, gameData}) {
-    const navigateToHomePage = () => {
-        goToHomePage(history);
+    const goToHomePage = () => {
+        navigateToHomePage(history);
     };
-    const navigateToCategory = () => {
-        goToCategory(history, categoryData);
+    const goToCategory = () => {
+        navigateToCategory(history, categoryData);
     };
     return (
         <div className="navigation-component">
-            <div className="navigation-component_navigate" onClick={navigateToHomePage}>Games</div>
+            <div className="navigation-component_navigate" onClick={goToHomePage}>Games</div>
             <div className="navigation-component_section">
                 <div className="navigation-component_arrow"> &raquo; </div>
                 <div className={gameData ? "navigation-component_navigate" : "navigation-component_non-navigation"}
-                     onClick={navigateToCategory}>
+                     onClick={goToCategory}>
                     {categoryData.displayName}
                 </div>
             </div>

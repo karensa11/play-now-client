@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import "./items-table.styles.scss";
-import {createIndexArr} from "../../../util/objectUtils";
-import memoize from "memoize-one";
 import {calculateItemsToDisplay, Pagination} from "../pagination/pagination.component";
 
 export default class ItemsTable extends Component{
